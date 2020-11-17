@@ -1,245 +1,162 @@
 <template>
-	<!--
-	本页面模板教程：https://ext.dcloud.net.cn/plugin?id=2717
-	uni-list 文档：https://ext.dcloud.net.cn/plugin?id=24
-	uniCloud 文档：https://uniapp.dcloud.io/uniCloud/README
-	uni-clientDB 组件文档：https://uniapp.dcloud.net.cn/uniCloud/uni-clientdb-component
-	DB Schema 规范：https://uniapp.dcloud.net.cn/uniCloud/schema
-	 -->
-	<view class="list">
-		<!-- 刷新页面后的顶部提示框 -->
-		<!-- 当前弹出内容没有实际逻辑 ，可根据当前业务修改弹出提示 -->
-		<view class="tips" :class="{ 'tips-ani': tipShow }">为您更新了10条最新新闻动态</view>
-		<uni-clientdb ref="udb" v-slot:default="{data, loading, error, options}" :options="formData" :collection="collection"
-		 :field="field" @load="load">
-			<!-- 基于 uni-list 的页面布局 -->
-			<uni-list>
-				<uni-list-item :border="true" class="uni-list-item--waterfall" title="自定义商品列表" v-for="item in data" :key="item._id">
-					<!-- 通过header插槽定义列表左侧图片 -->
-					<template v-slot:header>
-						<view class="uni-thumb shop-picture">
-							<image :src="item.goods_thumb" mode="aspectFill"></image>
-						</view>
-					</template>
-					<!-- 通过body插槽定义商品布局 -->
-					<view slot="body" class="shop">
-						<view>
-							<view class="uni-title">
-								<text class="uni-ellipsis-2">{{ item.name }}</text>
-							</view>
-							<view>
-								<text class="uni-tag hot-tag">{{ item.goods_tip }}</text>
-								<text v-for="tag in item.tag" :key="tag" class="uni-tag">{{ tag }}</text>
-							</view>
-						</view>
-						<view>
-							<view class="shop-price">
-								<text>¥</text>
-								<text class="shop-price-text">{{ item.goods_price }}</text>
-								<text>.00</text>
-							</view>
-							<view class="uni-note">{{ item.comment_count }}条评论 月销量 {{ item.month_sell_count }}</view>
-							<view class="uni-note ellipsis">
-								<text class="uni-ellipsis-1">{{ item.shop_name }}</text>
-								<text class="uni-link">进店 ></text>
-							</view>
-						</view>
-					</view>
-				</uni-list-item>
-			</uni-list>
-			<!-- 通过 loadMore 组件实现上拉加载效果，如需自定义显示内容，可参考：https://ext.dcloud.net.cn/plugin?id=29 -->
-			<uni-load-more v-if="loading || options.status === 'noMore' " :status="options.status" />
-		</uni-clientdb>
+	<view>
+		<cu-custom bgColor="bg-gradual-pink" :isBack="true"><block slot="backText">返回</block>
+			<block slot="content">轮播图</block>
+		</cu-custom>
+		<view class="cu-bar bg-white">
+			<view class="action">
+				<text class="cuIcon-title text-pink"></text> 全屏限高轮播
+			</view>
+			<view class="action">
+				<switch @change="DotStyle" :class="dotStyle?'checked':''" :checked="dotStyle?true:false"></switch>
+			</view>
+		</view>
+		<swiper class="screen-swiper" :class="dotStyle?'square-dot':'round-dot'" :indicator-dots="true" :circular="true"
+		 :autoplay="true" interval="5000" duration="500">
+			<swiper-item v-for="(item,index) in swiperList" :key="index">
+				<image :src="item.url" mode="aspectFill" v-if="item.type=='image'"></image>
+				<video :src="item.url" autoplay loop muted :show-play-btn="false" :controls="false" objectFit="cover" v-if="item.type=='video'"></video>
+			</swiper-item>
+		</swiper>
+		<!-- #ifndef MP-ALIPAY -->
+		<view class="cu-bar bg-white margin-top">
+			<view class="action">
+				<text class="cuIcon-title text-pink"></text> 卡片式轮播
+			</view>
+		</view>
+		<swiper class="card-swiper" :class="dotStyle?'square-dot':'round-dot'" :indicator-dots="true" :circular="true"
+		 :autoplay="true" interval="5000" duration="500" @change="cardSwiper" indicator-color="#8799a3"
+		 indicator-active-color="#0081ff">
+			<swiper-item v-for="(item,index) in swiperList" :key="index" :class="cardCur==index?'cur':''">
+				<view class="swiper-item">
+					<image :src="item.url" mode="aspectFill" v-if="item.type=='image'"></image>
+					<video :src="item.url" autoplay loop muted :show-play-btn="false" :controls="false" objectFit="cover" v-if="item.type=='video'"></video>
+				</view>
+			</swiper-item>
+		</swiper>
+		<view class="cu-bar bg-white margin-top">
+			<view class="action">
+				<text class="cuIcon-title text-pink"></text> 堆叠式轮播 
+			</view>
+		</view>
+		<view class="tower-swiper" @touchmove="TowerMove" @touchstart="TowerStart" @touchend="TowerEnd">
+			<view class="tower-item" :class="item.zIndex==1?'none':''" v-for="(item,index) in swiperList" :key="index" :style="[{'--index': item.zIndex,'--left':item.mLeft}]" :data-direction="direction">
+				<view class="swiper-item">
+					<image :src="item.url" mode="aspectFill" v-if="item.type=='image'"></image>
+					<video :src="item.url" autoplay loop muted :show-play-btn="false" :controls="false" objectFit="cover" v-if="item.type=='video'"></video>
+				</view>
+			</view>
+		</view>
+		<!-- #endif -->
 	</view>
 </template>
 
 <script>
 	export default {
-		components: {},
 		data() {
 			return {
-				// 数据表名
-				// collection: 'opendb-mall-goods',
-				// // 查询字段，多个字段用 , 分割
-				// field: 'goods_thumb,name,goods_tip,tag,goods_price,comment_count,month_sell_count,shop_name',
-				// formData: {
-				// 	waterfall: false, // 布局方向切换
-				// 	status: 'more', // 加载状态
-				// },
-				tipShow: false // 是否显示顶部提示框
+				cardCur: 0,
+				swiperList: [{
+					id: 0,
+					type: 'image',
+					url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84000.jpg'
+				}, {
+					id: 1,
+					type: 'image',
+					url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big37006.jpg',
+				}, {
+					id: 2,
+					type: 'image',
+					url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big39000.jpg'
+				}, {
+					id: 3,
+					type: 'image',
+					url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg'
+				}, {
+					id: 4,
+					type: 'image',
+					url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big25011.jpg'
+				}, {
+					id: 5,
+					type: 'image',
+					url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big21016.jpg'
+				}, {
+					id: 6,
+					type: 'image',
+					url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big99008.jpg'
+				}],
+				dotStyle: false,
+				towerStart: 0,
+				direction: ''
 			};
 		},
 		onLoad() {
-		 
-			
-			this.$net.fetch(function(res){
-				
-			},'','');
-			
+			this.TowerSwiper('swiperList');
+			// 初始化towerSwiper 传已有的数组名即可
 		},
 		methods: {
-			/**
-			 * 切换商品列表布局方向
-			 */
-			select() {
-				this.formData.waterfall = !this.formData.waterfall;
+			DotStyle(e) {
+				this.dotStyle = e.detail.value
 			},
-			/**
-			 * 下拉刷新回调函数
-			 */
-			onPullDownRefresh() {
-				this.tipShow = true
-				this.formData.status = 'more'
-				// this.$refs.udb.loadData({
-				// 	clear: true
-				// }, () => {
-				// 	this.tipShow = false
-				// 	uni.stopPullDownRefresh()
-				// })
+			// cardSwiper
+			cardSwiper(e) {
+				this.cardCur = e.detail.current
 			},
-			/**
-			 * 上拉加载回调函数
-			 */
-			onReachBottom() {
-				// this.$refs.udb.loadMore()
-			},
-			load(data, ended) {
-				if (ended) {
-					this.formData.status = 'noMore'
+			// towerSwiper
+			// 初始化towerSwiper
+			TowerSwiper(name) {
+				let list = this[name];
+				for (let i = 0; i < list.length; i++) {
+					list[i].zIndex = parseInt(list.length / 2) + 1 - Math.abs(i - parseInt(list.length / 2))
+					list[i].mLeft = i - parseInt(list.length / 2)
 				}
-			}
+				this.swiperList = list
+			},
+
+			// towerSwiper触摸开始
+			TowerStart(e) {
+				this.towerStart = e.touches[0].pageX
+			},
+
+			// towerSwiper计算方向
+			TowerMove(e) {
+				this.direction = e.touches[0].pageX - this.towerStart > 0 ? 'right' : 'left'
+			},
+
+			// towerSwiper计算滚动
+			TowerEnd(e) {
+				let direction = this.direction;
+				let list = this.swiperList;
+				if (direction == 'right') {
+					let mLeft = list[0].mLeft;
+					let zIndex = list[0].zIndex;
+					for (let i = 1; i < this.swiperList.length; i++) {
+						this.swiperList[i - 1].mLeft = this.swiperList[i].mLeft
+						this.swiperList[i - 1].zIndex = this.swiperList[i].zIndex
+					}
+					this.swiperList[list.length - 1].mLeft = mLeft;
+					this.swiperList[list.length - 1].zIndex = zIndex;
+				} else {
+					let mLeft = list[list.length - 1].mLeft;
+					let zIndex = list[list.length - 1].zIndex;
+					for (let i = this.swiperList.length - 1; i > 0; i--) {
+						this.swiperList[i].mLeft = this.swiperList[i - 1].mLeft
+						this.swiperList[i].zIndex = this.swiperList[i - 1].zIndex
+					}
+					this.swiperList[0].mLeft = mLeft;
+					this.swiperList[0].zIndex = zIndex;
+				}
+				this.direction = ""
+				this.swiperList = this.swiperList
+			},
 		}
-	};
+	}
 </script>
 
-<style lang="scss">
-	@import '@/common/uni-ui.scss';
-
-	page {
-		display: flex;
-		flex-direction: column;
-		box-sizing: border-box;
-		background-color: #efeff4;
-		min-height: 100%;
-		height: auto;
-	}
-
-	.tips {
-		color: #67c23a;
-		font-size: 14px;
-		line-height: 40px;
-		text-align: center;
-		background-color: #f0f9eb;
-		height: 0;
-		opacity: 0;
-		transform: translateY(-100%);
-		transition: all 0.3s;
-	}
-
-	.tips-ani {
-		transform: translateY(0);
-		height: 40px;
-		opacity: 1;
-	}
-
-	.shop {
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-	}
-
-	.shop-picture {
-		width: 110px;
-		height: 110px;
-	}
-
-	.shop-picture-column {
-		width: 100%;
-		height: 170px;
-		margin-bottom: 10px;
-	}
-
-	.shop-price {
-		margin-top: 5px;
-		font-size: 12px;
-		color: #ff5a5f;
-	}
-
-	.shop-price-text {
-		font-size: 16px;
-	}
-
-	.hot-tag {
-		background: #ff5a5f;
-		border: none;
-		color: #fff;
-	}
-
-	.button-box {
-		height: 30px;
-		line-height: 30px;
-		font-size: 12px;
-		background: #007AFF;
-		color: #fff;
-	}
-
-	.uni-link {
-		flex-shrink: 0;
-	}
-
-	.ellipsis {
-		display: flex;
-		overflow: hidden;
-	}
-
-	.uni-ellipsis-1 {
-		overflow: hidden;
-		white-space: nowrap;
-		text-overflow: ellipsis;
-	}
-
-	.uni-ellipsis-2 {
-		overflow: hidden;
-		text-overflow: ellipsis;
-		display: -webkit-box;
-		-webkit-line-clamp: 2;
-		-webkit-box-orient: vertical;
-	}
-
-
-	// 默认加入 scoped ，所以外面加一层提升权重
-	.list {
-		.uni-list--waterfall {
-
-			/* #ifndef H5 || APP-VUE */
-			// 小程序 编译后会多一层标签，而其他平台没有，所以需要特殊处理一下
-			/deep/ .uni-list {
-				/* #endif */
-				display: flex;
-				flex-direction: row;
-				flex-wrap: wrap;
-				padding: 5px;
-				box-sizing: border-box;
-
-				/* #ifdef H5 || APP-VUE */
-				// h5 和 app-vue 使用深度选择器，因为默认使用了 scoped ，所以样式会无法穿透
-				/deep/
-				/* #endif */
-				.uni-list-item--waterfall {
-					width: 50%;
-					box-sizing: border-box;
-
-					.uni-list-item__container {
-						padding: 5px;
-						flex-direction: column;
-					}
-				}
-
-				/* #ifndef H5 || APP-VUE */
-			}
-
-			/* #endif */
-		}
+<style>
+	.tower-swiper .tower-item {
+		transform: scale(calc(0.5 + var(--index) / 10));
+		margin-left: calc(var(--left) * 100upx - 150upx);
+		z-index: var(--index);
 	}
 </style>

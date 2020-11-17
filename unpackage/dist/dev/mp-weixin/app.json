@@ -1,31 +1,5 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/basics/layout",
-    "pages/basics/background",
-    "pages/basics/text",
-    "pages/basics/icon",
-    "pages/basics/button",
-    "pages/basics/design",
-    "pages/basics/tag",
-    "pages/basics/avatar",
-    "pages/basics/progress",
-    "pages/basics/shadow",
-    "pages/basics/loading",
-    "pages/component/bar",
-    "pages/component/nav",
-    "pages/component/list",
-    "pages/component/card",
-    "pages/component/form",
-    "pages/component/timeline",
-    "pages/component/chat",
-    "pages/component/swiper",
-    "pages/component/modal",
-    "pages/component/steps",
-    "pages/plugin/indexes",
-    "pages/plugin/animation",
-    "pages/plugin/drawer",
-    "pages/plugin/verticalnav",
     "pages/home/home",
     "pages/cate/cate",
     "pages/cart/cart",
@@ -40,7 +14,7 @@
   },
   "tabBar": {
     "borderStyle": "black",
-    "backgroundColor": "#ff000000",
+    "backgroundColor": "#FFFFFF",
     "color": "#000",
     "selectedColor": "#f00",
     "list": [
@@ -51,7 +25,7 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/cate/cate",
         "iconPath": "static/img/tabBar/cate.png",
         "selectedIconPath": "static/img/tabBar/cate_on.png",
         "text": "分类"

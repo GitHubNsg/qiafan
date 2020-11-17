@@ -1,111 +1,10 @@
 {
 	"pages": [
-		//pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-		{
-			"path": "pages/index/index",
-			"style": {}
-		},
-		{
-			"path": "pages/basics/layout",
-			"style": {}
-		},
-		{
-			"path": "pages/basics/background",
-			"style": {}
-		},
-		{
-			"path": "pages/basics/text",
-			"style": {}
-		},
-		{
-			"path": "pages/basics/icon",
-			"style": {}
-		},
-		{
-			"path": "pages/basics/button",
-			"style": {}
-		},
-		{
-			"path": "pages/basics/design",
-			"style": {}
-		},
-		{
-			"path": "pages/basics/tag",
-			"style": {}
-		},
-		{
-			"path": "pages/basics/avatar",
-			"style": {}
-		},
-		{
-			"path": "pages/basics/progress",
-			"style": {}
-		},
-		{
-			"path": "pages/basics/shadow",
-			"style": {}
-		},
-		{
-			"path": "pages/basics/loading",
-			"style": {}
-		},
-		{
-			"path": "pages/component/bar",
-			"style": {}
-		},
-		{
-			"path": "pages/component/nav",
-			"style": {}
-		},
-		{
-			"path": "pages/component/list",
-			"style": {}
-		},
-		{
-			"path": "pages/component/card",
-			"style": {}
-		},
-		{
-			"path": "pages/component/form",
-			"style": {}
-		},
-		{
-			"path": "pages/component/timeline",
-			"style": {}
-		},
-		{
-			"path": "pages/component/chat",
-			"style": {}
-		},
-		{
-			"path": "pages/component/swiper",
-			"style": {}
-		},
-		{
-			"path": "pages/component/modal",
-			"style": {}
-		},
-		{
-			"path": "pages/component/steps",
-			"style": {}
-		}, {
-			"path": "pages/plugin/indexes",
-			"style": {}
-		}, {
-			"path": "pages/plugin/animation",
-			"style": {}
-		}, {
-			"path": "pages/plugin/drawer",
-			"style": {}
-		}, {
-			"path": "pages/plugin/verticalnav",
-			"style": {}
-		}
-	    ,{
+		  {
             "path" : "pages/home/home",
             "style" : {
                 "enablePullDownRefresh": true,
-                "navigationBarTitleText": "商品列表"
+                "navigationBarTitleText": "主页"
             }
             
         }
@@ -143,7 +42,7 @@
 	},
 	"tabBar": {
 		"borderStyle": "black",
-		"backgroundColor": "#ff000000",
+		"backgroundColor": "#FFFFFF",
 		"color": "#000",
 		"selectedColor": "#f00",
 		"list": [{
@@ -153,7 +52,7 @@
 				"text": "首页"
 			},
 			{
-				"pagePath": "pages/index/index",
+				"pagePath": "pages/cate/cate",
 				"iconPath": "static/img/tabBar/cate.png",
 				"selectedIconPath": "static/img/tabBar/cate_on.png",
 				"text": "分类"
