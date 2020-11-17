@@ -33,39 +33,39 @@
   ],
   "subPackages": [],
   "window": {
-    "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "uni-app",
-    "navigationBarBackgroundColor": "#F8F8F8",
-    "backgroundColor": "#F8F8F8"
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "恰饭",
+    "navigationBarBackgroundColor": "#f00",
+    "backgroundColor": "#f00"
   },
   "tabBar": {
     "borderStyle": "black",
-    "backgroundColor": "#333",
-    "color": "#8F8F94",
-    "selectedColor": "#f33e54",
+    "backgroundColor": "#ff000000",
+    "color": "#000",
+    "selectedColor": "#f00",
     "list": [
       {
         "pagePath": "pages/home/home",
-        "iconPath": "static/img/tabbar/home.png",
-        "selectedIconPath": "static/img/tabbar/homeactive.png",
+        "iconPath": "static/img/tabBar/home.png",
+        "selectedIconPath": "static/img/tabBar/home_on.png",
         "text": "首页"
       },
       {
         "pagePath": "pages/index/index",
-        "iconPath": "static/img/tabbar/guanzhu.png",
-        "selectedIconPath": "static/img/tabbar/guanzhuactive.png",
+        "iconPath": "static/img/tabBar/cate.png",
+        "selectedIconPath": "static/img/tabBar/cate_on.png",
         "text": "分类"
       },
       {
         "pagePath": "pages/cart/cart",
-        "iconPath": "static/img/tabbar/news.png",
-        "selectedIconPath": "static/img/tabbar/newsactive.png",
+        "iconPath": "static/img/tabBar/cart.png",
+        "selectedIconPath": "static/img/tabBar/cart_on.png",
         "text": "购物车"
       },
       {
         "pagePath": "pages/mine/mine",
-        "iconPath": "static/img/tabbar/me.png",
-        "selectedIconPath": "static/img/tabbar/meactive.png",
+        "iconPath": "static/img/tabBar/user.png",
+        "selectedIconPath": "static/img/tabBar/user_on.png",
         "text": "我"
       }
     ]
