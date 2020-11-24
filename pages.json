@@ -20,7 +20,7 @@
         ,{
             "path" : "pages/cart/cart",
             "style" : {
-                "enablePullDownRefresh": true,
+                "enablePullDownRefresh": false,
                 "navigationBarTitleText": "购物车"
             }
             

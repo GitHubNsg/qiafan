@@ -1,21 +1,21 @@
 
 .page {
-	height: 100Vh;
+	height: 100vh;
 	width: 100vw;
 }
 .page.show {
 	overflow: hidden;
 }
 .switch-sex::after {
-	content: "\e716";
+	content: '\e716';
 }
 .switch-sex::before {
-	content: "\e7a9";
+	content: '\e7a9';
 }
 .switch-music::after {
-	content: "\e66a";
+	content: '\e66a';
 }
 .switch-music::before {
-	content: "\e6db";
+	content: '\e6db';
 }
 

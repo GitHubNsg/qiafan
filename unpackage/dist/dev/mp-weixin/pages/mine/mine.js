@@ -230,52 +230,7 @@ var _default =
         cuIcon: 'cardboardfill',
         color: 'red',
         badge: 120,
-        name: 'VR' },
-      {
-        cuIcon: 'recordfill',
-        color: 'orange',
-        badge: 1,
-        name: '录像' },
-      {
-        cuIcon: 'picfill',
-        color: 'yellow',
-        badge: 0,
-        name: '图像' },
-      {
-        cuIcon: 'noticefill',
-        color: 'olive',
-        badge: 22,
-        name: '通知' },
-      {
-        cuIcon: 'upstagefill',
-        color: 'cyan',
-        badge: 0,
-        name: '排行榜' },
-      {
-        cuIcon: 'clothesfill',
-        color: 'blue',
-        badge: 0,
-        name: '皮肤' },
-      {
-        cuIcon: 'discoverfill',
-        color: 'purple',
-        badge: 0,
-        name: '发现' },
-      {
-        cuIcon: 'questionfill',
-        color: 'mauve',
-        badge: 0,
-        name: '帮助' },
-      {
-        cuIcon: 'commandfill',
-        color: 'purple',
-        badge: 0,
-        name: '问答' },
-      {
-        cuIcon: 'brandfill',
-        color: 'mauve',
-        badge: 0,
-        name: '版权' }],
+        name: 'VR' }],
 
       modalName: null,
       gridCol: 3,
@@ -288,51 +243,7 @@ var _default =
       listTouchDirection: null };
 
   },
-  methods: {
-    showModal: function showModal(e) {
-      this.modalName = e.currentTarget.dataset.target;
-    },
-    hideModal: function hideModal(e) {
-      this.modalName = null;
-    },
-    Gridchange: function Gridchange(e) {
-      this.gridCol = e.detail.value;
-    },
-    Gridswitch: function Gridswitch(e) {
-      this.gridBorder = e.detail.value;
-    },
-    MenuBorder: function MenuBorder(e) {
-      this.menuBorder = e.detail.value;
-    },
-    MenuArrow: function MenuArrow(e) {
-      this.menuArrow = e.detail.value;
-    },
-    MenuCard: function MenuCard(e) {
-      this.menuCard = e.detail.value;
-    },
-    SwitchSex: function SwitchSex(e) {
-      this.skin = e.detail.value;
-    },
-
-    // ListTouch触摸开始
-    ListTouchStart: function ListTouchStart(e) {
-      this.listTouchStart = e.touches[0].pageX;
-    },
-
-    // ListTouch计算方向
-    ListTouchMove: function ListTouchMove(e) {
-      this.listTouchDirection = e.touches[0].pageX - this.listTouchStart > 0 ? 'right' : 'left';
-    },
-
-    // ListTouch计算滚动
-    ListTouchEnd: function ListTouchEnd(e) {
-      if (this.listTouchDirection == 'left') {
-        this.modalName = e.currentTarget.dataset.target;
-      } else {
-        this.modalName = null;
-      }
-      this.listTouchDirection = null;
-    } } };exports.default = _default;
+  methods: {} };exports.default = _default;
 
 /***/ }),
 
