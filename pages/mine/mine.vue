@@ -18,27 +18,27 @@
 
 					<view class="cu-list grid col-4">
 						<view class="cu-item">
-							<navigator url="../order/order?id=0" open-type="redirect" class="cuIcon-all text-red">
+							<navigator url="../order/order?id=0" open-type="redirect" class="cuIcon-text text-red">
 
 								<text class="text-black">我的订单</text>
 							</navigator>
 						</view>
 						<view class="cu-item">
-							<navigator url="../order/order?id=1" open-type="redirect" class="cuIcon-all text-red">
+							<navigator url="../order/order?id=1" open-type="redirect" class="cuIcon-pay text-red">
 
 								<text class="text-black">待付款</text>
 							</navigator>
 						</view>
 						<view class="cu-item">
-							<navigator url="../order/order?id=2" open-type="redirect" class="cuIcon-all text-red">
+							<navigator url="../order/order?id=2" open-type="redirect" class="cuIcon-send text-red">
 
 								<text class="text-black">待发货</text>
 							</navigator>
 						</view>
 						<view class="cu-item">
-							<navigator url="../order/order?id=3" open-type="redirect" class="cuIcon-all text-red">
+							<navigator url="../order/order?id=3" open-type="redirect" class="cuIcon-safe text-red">
 
-								<text class="text-black">待发货</text>
+								<text class="text-black">待收货</text>
 							</navigator>
 						</view>
 			 
@@ -49,9 +49,9 @@
 				<view class="cu-list menu margin-top-xl">
 
 					<view class="cu-item arrow">
-						<navigator class="content" url="../help/help" hover-class="none" open-type="redirect">
+						<navigator class="content" url="../address/address" hover-class="none" open-type="redirect">
 
-							<text class="cuIcon-addressbook text-grey"></text>
+							<text class="cuIcon-addressbook text-gray" ></text>
 							<text class="text-grey"> 收货地址</text>
 						</navigator>
 					</view>
@@ -63,10 +63,12 @@
 
 					</view>
 					<view class="cu-item arrow">
+						<button open-type="contact" class="content">
 						<view class="content">
 							<text class="cuIcon-community text-gray"></text>
 							<text class="text-gray">联系客服</text>
 						</view>
+						</button>
 
 					</view>
 

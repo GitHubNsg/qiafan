@@ -1,6 +1,6 @@
 <template>
-	<view>
-		<scroll-view scroll-into-view scroll-with-animation="">
+	<view  >
+		<scroll-view scroll-y>
 			<view class="cu-list menu">
 			 	<view class="cu-item"><text>测试</text></view>
 				<view class="cu-item"><text>测试</text></view>
@@ -22,8 +22,8 @@
 				<view class="cu-item"><text>测试</text></view>
 			</view>
 		</scroll-view>
-
-		<view style="position: absolute;bottom: 0;width: 100%;">
+<view class="bottom-fix"   >
+		<!-- <view class="solid-bottom bottom-fix" style="[{margin-bottom:StatusBar + 'px'}]"> -->
 			<view class="cu-bar bg-white tabbar border shop">
 				<button class="action" open-type="contact">
 					<view class="cuIcon-service text-green"><view class="cu-tag badge"></view></view>
@@ -42,7 +42,11 @@
 <script>
 export default {
 	data() {
+		
+		console.log(this.StatusBar);
+			console.log(uni.statusBarHeight);
 		return {
+			StatusBar:  this.StatusBar,
 			cuIconList: [
 				{
 					cuIcon: 'cardboardfill',
@@ -189,5 +193,12 @@ export default {
 
 .switch-music::before {
 	content: '\e6db';
+}
+.bottom-fix {
+	position: fixed;
+	z-index: 999;
+	bottom: 0rpx;
+	width: 100%;
+	margin-bottom: var(--window-bottom);
 }
 </style>

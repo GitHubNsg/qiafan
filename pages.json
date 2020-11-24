@@ -51,6 +51,24 @@
             }
             
         }
+        ,{
+            "path" : "pages/address/address",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "收货地址",
+                "enablePullDownRefresh": false
+            }
+            
+        },
+		{
+		    "path" : "pages/address/add",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "新增收货地址",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		}
     ], 
 	"globalStyle": {
 		"navigationBarTextStyle": "white",

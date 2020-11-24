@@ -18,4 +18,11 @@
 .switch-music::before {
 	content: '\e6db';
 }
+.bottom-fix {
+	position: fixed;
+	z-index: 999;
+	bottom: 0rpx;
+	width: 100%;
+	margin-bottom: 0px;
+}
 
