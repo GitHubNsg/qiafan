@@ -33,6 +33,30 @@
             }
             
         }
+        ,{
+            "path" : "pages/detail/detail",
+            "style" : {
+                "app-plus": {
+                    "titleNView": {
+                        "buttons": [
+                            {
+                                "type": "share"
+                            }
+                        ],
+                        "type": "transparent"
+                    }
+                },
+                "h5": {
+                    "titleNView": {
+                        "buttons": [
+                        ],
+                        "type": "transparent"
+                    }
+                },
+                "navigationBarTitleText": "详情"
+            }
+            
+        }
     ], 
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
