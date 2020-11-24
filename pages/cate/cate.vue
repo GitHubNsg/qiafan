@@ -7,26 +7,31 @@
 			<view class=" bg-white">
 				<view class="flex">
 					
-					<uni-list class="basis-xs">
-						
-						<uni-list-item title="列表文字"> 
-						 
-						</uni-list-item>
-						<uni-list-item title="列表文字">
-						 
-						</uni-list-item>
-					</uni-list>
+					<view class="basis-s cu-list menu">
+						<view class="cu-item ">
+							<text > 测试</text>
+						</view> 
+						<view class="cu-item ">
+							<text > 测试</text>
+						</view> 
+						<view class="cu-item ">
+							<text > 测试测</text>
+						</view> 
+					</view>
 					
+					 <view class="basis-lg cu-list menu">
+					 	<view class="cu-item ">
+					 		<text > 测试</text>
+					 	</view> 
+					 	<view class="cu-item ">
+					 		<text > 测试</text>
+					 	</view> 
+					 	<view class="cu-item ">
+					 		<text > 测试测</text>
+					 	</view> 
+					 </view>
 					 
-					<uni-list class="basis-xl bg-grey margin-xs padding-sm radius">
-						<template v-slot:header>
-							<view class="uni-thumb shop-picture">
-								<image :src="item.goods_thumb" mode="aspectFill"></image>
-							</view>
-						</template>
-						
-					</uni-list>
-
+					 
 				</view>
 			</view>
 			 	 

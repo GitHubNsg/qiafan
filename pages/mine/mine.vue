@@ -4,7 +4,7 @@
 
 
 			<view>
-				<view class="text-center " style="background-color: #f00;height: 220rpx;text-align: center;vertical-align: middle;">
+				<view class="text-left " style="background-color: #f00;height: 220rpx;vertical-align: middle;">
 
 					<view class="cu-avatar cu-item round" style="background-image: url(../../static/img/tabBar/user_on.png);margin: 60rpx">
 					</view>
@@ -14,7 +14,7 @@
 
 				<view>
 
-					<view class=" margin-top-sm">我的订单</view>
+					<!-- <view class=" margin-top-sm">我的订单</view> -->
 
 					<view class="cu-list grid col-4">
 						<view class="cu-item">
@@ -51,20 +51,20 @@
 					<view class="cu-item arrow">
 						<navigator class="content" url="../help/help" hover-class="none" open-type="redirect">
 
-							<text class="cuIcon-add text-grey"></text>
+							<text class="cuIcon-addressbook text-grey"></text>
 							<text class="text-grey"> 收货地址</text>
 						</navigator>
 					</view>
 					<view class="cu-item arrow">
 						<navigator class="content" url="../help/help" hover-class="none" open-type="redirect">
-							<text class="cuIcon-squarecheck text-gray"></text>
+							<text class="cuIcon-question text-gray"></text>
 							<text class="text-gray">我的帮助</text>
 						</navigator>
 
 					</view>
 					<view class="cu-item arrow">
 						<view class="content">
-							<text class="cuIcon-activity text-gray"></text>
+							<text class="cuIcon-community text-gray"></text>
 							<text class="text-gray">联系客服</text>
 						</view>
 
@@ -99,52 +99,7 @@
 					color: 'red',
 					badge: 120,
 					name: 'VR'
-				}, {
-					cuIcon: 'recordfill',
-					color: 'orange',
-					badge: 1,
-					name: '录像'
-				}, {
-					cuIcon: 'picfill',
-					color: 'yellow',
-					badge: 0,
-					name: '图像'
-				}, {
-					cuIcon: 'noticefill',
-					color: 'olive',
-					badge: 22,
-					name: '通知'
-				}, {
-					cuIcon: 'upstagefill',
-					color: 'cyan',
-					badge: 0,
-					name: '排行榜'
-				}, {
-					cuIcon: 'clothesfill',
-					color: 'blue',
-					badge: 0,
-					name: '皮肤'
-				}, {
-					cuIcon: 'discoverfill',
-					color: 'purple',
-					badge: 0,
-					name: '发现'
-				}, {
-					cuIcon: 'questionfill',
-					color: 'mauve',
-					badge: 0,
-					name: '帮助'
-				}, {
-					cuIcon: 'commandfill',
-					color: 'purple',
-					badge: 0,
-					name: '问答'
-				}, {
-					cuIcon: 'brandfill',
-					color: 'mauve',
-					badge: 0,
-					name: '版权'
-				}],
+				}      ],
 				modalName: null,
 				gridCol: 3,
 				gridBorder: false,
@@ -157,50 +112,7 @@
 			};
 		},
 		methods: {
-			showModal(e) {
-				this.modalName = e.currentTarget.dataset.target
-			},
-			hideModal(e) {
-				this.modalName = null
-			},
-			Gridchange(e) {
-				this.gridCol = e.detail.value
-			},
-			Gridswitch(e) {
-				this.gridBorder = e.detail.value
-			},
-			MenuBorder(e) {
-				this.menuBorder = e.detail.value
-			},
-			MenuArrow(e) {
-				this.menuArrow = e.detail.value
-			},
-			MenuCard(e) {
-				this.menuCard = e.detail.value
-			},
-			SwitchSex(e) {
-				this.skin = e.detail.value
-			},
-
-			// ListTouch触摸开始
-			ListTouchStart(e) {
-				this.listTouchStart = e.touches[0].pageX
-			},
-
-			// ListTouch计算方向
-			ListTouchMove(e) {
-				this.listTouchDirection = e.touches[0].pageX - this.listTouchStart > 0 ? 'right' : 'left'
-			},
-
-			// ListTouch计算滚动
-			ListTouchEnd(e) {
-				if (this.listTouchDirection == 'left') {
-					this.modalName = e.currentTarget.dataset.target
-				} else {
-					this.modalName = null
-				}
-				this.listTouchDirection = null
-			}
+			 
 		}
 	}
 </script>
