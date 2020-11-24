@@ -1,13 +1,14 @@
 <template>
 	<view>
 		 
+		 <scroll-view  >
 		 
 		<block>
 		 
-			<view class=" bg-white">
-				<view class="flex">
+			<view class="">
+				<view class="flex flex-wrap">
 					
-					<view class="basis-s cu-list menu">
+					<view class="basis-xs  cu-list menu  no-padding" style="margin: 0rpx;" >
 						<view class="cu-item ">
 							<text > 测试</text>
 						</view> 
@@ -15,11 +16,12 @@
 							<text > 测试</text>
 						</view> 
 						<view class="cu-item ">
-							<text > 测试测</text>
+							<text > 测试</text>
 						</view> 
 					</view>
 					
-					 <view class="basis-lg cu-list menu">
+					 <view class="basis-xl grid col-2 cu-list no-padding " 
+					 style=" margin-top: 0rpx;padding-left: 1rpx;">
 					 	<view class="cu-item ">
 					 		<text > 测试</text>
 					 	</view> 
@@ -27,8 +29,26 @@
 					 		<text > 测试</text>
 					 	</view> 
 					 	<view class="cu-item ">
-					 		<text > 测试测</text>
+					 		<text > 测试</text>
 					 	</view> 
+						<view class="cu-item ">
+							<text > 测试</text>
+						</view> 
+						<view class="cu-item ">
+							<text > 测试</text>
+						</view> 
+						<view class="cu-item ">
+							<text > 测试</text>
+						</view> 
+						<view class="cu-item ">
+							<text > 测试</text>
+						</view> 
+						<view class="cu-item ">
+							<text > 测试</text>
+						</view> 
+						<view class="cu-item ">
+							<text > 测试</text>
+						</view> 
 					 </view>
 					 
 					 
@@ -36,7 +56,7 @@
 			</view>
 			 	 
 		</block>
-		  
+		  </scroll-view>
 	</view>
 </template>
 
