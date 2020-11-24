@@ -19,11 +19,5 @@ export default {
 
 <style>
 	
-	.bottom-fix {
-		position: fixed;
-		z-index: 999;
-		bottom: 0rpx;
-		width: 100%;
-		margin-bottom: 0;
-	}
+
 </style>

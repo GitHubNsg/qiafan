@@ -178,27 +178,5 @@ export default {
 .page.show {
 	overflow: hidden;
 }
-
-.switch-sex::after {
-	content: '\e716';
-}
-
-.switch-sex::before {
-	content: '\e7a9';
-}
-
-.switch-music::after {
-	content: '\e66a';
-}
-
-.switch-music::before {
-	content: '\e6db';
-}
-.bottom-fix {
-	position: fixed;
-	z-index: 999;
-	bottom: 0rpx;
-	width: 100%;
-	margin-bottom: var(--window-bottom);
-}
+ 
 </style>

@@ -221,7 +221,13 @@
 	.text-light {
 		font-weight: 300;
 	}
-
+	.bottom-fix {
+		position: fixed;
+		z-index: 999;
+		bottom: 0rpx;
+		width: 100%;
+		margin-bottom: var(--window-bottom);
+	}
 	@keyframes show {
 		0% {
 			transform: translateY(-50px);
