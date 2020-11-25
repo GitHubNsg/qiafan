@@ -6,12 +6,12 @@
 			<view class="grid col-3 cu-list  no-padding ">
 
 				<view class="cu-item" v-for="(item,index) in dataList" :key="index">
-					<navigator url="../detail/detail">
+					<navigator :url="'../detail/detail?id='+JSON.stringify(item)">
 
-						<view>
-							<view class="cu-avatar round" style="background-image: url(../../static/componentBg.png);"></view>
+						<view class="content">
+							<view class="cu-avatar margin-10" :style="'background-image: url('+item.cover+');'"></view>
 
-							<text>{{item.title}} </text>
+							<text>{{item.name}} </text>
 						</view>
 					</navigator>
 				</view>
@@ -34,24 +34,18 @@
 	export default {
 		data() {
 			return {
-				dataList: [{
-						"title": "test"
-					},
-					{
-						"title": "test1"
-					},
-					{
-						"title": "test2"
-					},
-					{
-						"title": "test2"
-					}, {
-						"title": "test2"
-					}, {
-						"title": "test2"
-					},
+				dataList: [ 
 				]
 			}
+		},
+		onLoad(option) {
+			var id=option.id;
+			var thus=this;
+			this.$net.fetch(function(r){
+				console.log(r)
+				thus.dataList=r.list;
+			},this.$net.getGoods,{'cate':id},'post')
+			
 		},
 		methods: {
 

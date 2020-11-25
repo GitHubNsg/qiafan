@@ -3,10 +3,12 @@
 
 
 		<swiper class="screen-swiper" :indicator-dots="true" :circular="true" :autoplay="true" interval="5000" duration="500">
-			<swiper-item v-for="">
-				<image style="background-image: url(../../static/BasicsBg.png);" mode="aspectFill"></image>
+			<swiper-item  v-for="(item,index) in banner" :key="index" >
+				<image :style="'background-image: url('+item+');'" mode="aspectFill"></image>
 			</swiper-item>
 		</swiper>  
+		
+		
 		<view class="bottom-fix-no" >
 			<!-- <view class="solid-bottom bottom-fix" style="[{margin-bottom:StatusBar + 'px'}]"> -->
 			<view class="cu-bar bg-white tabbar border shop">
@@ -32,7 +34,16 @@
 <script>
 	export default {
 		data() {
-			return {};
+			return {
+				banner:[]
+			};
+		},
+		onLoad(option) {
+			
+			var id=option.id;
+			var goods= JSON.parse(id);
+			console.log(goods);
+			this.banner=goods.slider;
 		}
 	};
 </script>

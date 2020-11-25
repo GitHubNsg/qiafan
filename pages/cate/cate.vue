@@ -17,10 +17,31 @@
 						</view>
 						<view class="basis-xl     no-padding" style="margin: 0rpx;">
 							<scroll-view scroll-y>
-								<view class=" grid col-2 cu-list no-padding " style=" margin-top: 0rpx;padding: 0rpx;">
-									<view v-for="(item, index) in subItem" :key="index" class="cu-item ">
+								<view class="    cu-list no-padding " style=" margin-top: 0rpx;padding: 0rpx;">
+									<!-- <view v-for="(item, index) in subItem" :key="index" class="cu-item ">
 										<navigator :url="'../goods/goods?id='+item.id" ><text class="text-center align-center">{{item.name}}</text></navigator>
-									</view>
+									</view> -->
+									
+									<block v-for="(item,index) in subItem" :key="index"  >
+													<view>
+														<view class="padding">{{item.name}}</view>
+														<view class=" grid col-2 cu-list no-padding " style=" margin-top: 0rpx;padding: 0rpx;">
+															<view class="cu-item" v-for="(childerItems,sub) in item.sub" :key="sub">
+																<navigator :url="'../goods/goods?id='+childerItems.id">
+																	
+																	
+																	<view class="content">
+																		<view class="text-grey">{{childerItems.name}}
+																		</view>
+																	 
+																	</view>
+																</navigator>
+																
+																
+															</view>
+														</view>
+													</view>
+												</block>
 								</view>
 							</scroll-view>
 						</view>

@@ -161,10 +161,21 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+//
+//
 var _default =
 {
   data: function data() {
-    return {};
+    return {
+      banner: [] };
+
+  },
+  onLoad: function onLoad(option) {
+
+    var id = option.id;
+    var goods = JSON.parse(id);
+    console.log(goods);
+    this.banner = goods.slider;
   } };exports.default = _default;
 
 /***/ }),

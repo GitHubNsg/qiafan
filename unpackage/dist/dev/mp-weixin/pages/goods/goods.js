@@ -95,6 +95,24 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  var l0 = _vm.__map(_vm.dataList, function(item, index) {
+    var $orig = _vm.__get_orig(item)
+
+    var g0 = JSON.stringify(item)
+    return {
+      $orig: $orig,
+      g0: g0
+    }
+  })
+
+  _vm.$mp.data = Object.assign(
+    {},
+    {
+      $root: {
+        l0: l0
+      }
+    }
+  )
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -164,23 +182,17 @@ var _default =
 {
   data: function data() {
     return {
-      dataList: [{
-        "title": "test" },
-
-      {
-        "title": "test1" },
-
-      {
-        "title": "test2" },
-
-      {
-        "title": "test2" },
-      {
-        "title": "test2" },
-      {
-        "title": "test2" }] };
+      dataList: [] };
 
 
+  },
+  onLoad: function onLoad(option) {
+    var id = option.id;
+    var thus = this;
+    this.$net.fetch(function (r) {
+      console.log(r);
+      thus.dataList = r.list;
+    }, this.$net.getGoods, { 'cate': id }, 'post');
 
   },
   methods: {} };exports.default = _default;

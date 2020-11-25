@@ -8035,6 +8035,7 @@ function normalizeComponent (
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var host = "http://qiafan.applinzi.com/ThinkAdmin/public/index.php/data/";
 var getSlider = "api.data/getSlider"; //轮播
 var getCate = "api.goods/getCate"; //类型
+var getGoods = "api.goods/getGoods"; //类型
 
 var fetch = function fetch(ret, address, param) {var method = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'get';
   console.log(param);
@@ -8073,7 +8074,8 @@ var fetch = function fetch(ret, address, param) {var method = arguments.length >
 {
   fetch: fetch,
   getSlider: getSlider,
-  getCate: getCate };exports.default = _default;
+  getCate: getCate,
+  getGoods: getGoods };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ })

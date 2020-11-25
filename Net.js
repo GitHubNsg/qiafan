@@ -1,6 +1,7 @@
 const host = "http://qiafan.applinzi.com/ThinkAdmin/public/index.php/data/"; 
 const getSlider = "api.data/getSlider";  //轮播
 const getCate = "api.goods/getCate";  //类型
+const getGoods = "api.goods/getGoods";  //类型
 
 const fetch = (ret,address,param,method='get') => {
 	console.log(param)
@@ -39,5 +40,6 @@ const fetch = (ret,address,param,method='get') => {
 export default {
 	fetch,
 	getSlider,
-	getCate
+	getCate,
+	getGoods
 }
