@@ -228,6 +228,14 @@
 		width: 100%;
 		margin-bottom: var(--window-bottom);
 	}
+	
+	.bottom-fix-no {
+		position: fixed;
+		z-index: 999;
+		bottom: 0rpx;
+		width: 100%;
+		margin-bottom: 0rpx;
+	}
 	@keyframes show {
 		0% {
 			transform: translateY(-50px);

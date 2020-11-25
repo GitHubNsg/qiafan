@@ -1,6 +1,8 @@
-const host = "http://127.0.0.1:8099"; 
+const host = "http://qiafan.applinzi.com/ThinkAdmin/public/index.php/data/"; 
+const getSlider = "api.data/getSlider";  //轮播
 
-const fetch = (ret,address,param,method='post') => {
+
+const fetch = (ret,address,param,method='get') => {
 	console.log(param)
 	var header={
 		'content-type':'application/x-www-form-urlencoded',
@@ -35,5 +37,6 @@ const fetch = (ret,address,param,method='post') => {
 
 }
 export default {
-	fetch
+	fetch,
+	getSlider
 }

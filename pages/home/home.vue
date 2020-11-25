@@ -5,8 +5,8 @@
 		<swiper class="screen-swiper" :class="dotStyle?'square-dot':'round-dot'" :indicator-dots="true" :circular="true"
 		 :autoplay="true" interval="5000" duration="500">
 			<swiper-item v-for="(item,index) in swiperList" :key="index">
-				<image :src="item.url" mode="aspectFill" v-if="item.type=='image'"></image>
-				<video :src="item.url" autoplay loop muted :show-play-btn="false" :controls="false" objectFit="cover" v-if="item.type=='video'"></video>
+				<image :src="item.img" mode="aspectFill" v-if="item.type=='image'"></image>
+				<video :src="item.img" autoplay loop muted :show-play-btn="false" :controls="false" objectFit="cover" v-if="item.type=='video'"></video>
 			</swiper-item>
 		</swiper>
 		 
@@ -55,6 +55,12 @@
 		onLoad() {
 			this.TowerSwiper('swiperList');
 			// 初始化towerSwiper 传已有的数组名即可
+			
+			var thus=this;
+			this.$net.fetch(function(v){
+				thus.swiperList=v
+			},this.$net.getSlider);
+			
 		},
 		methods: {
 			DotStyle(e) {

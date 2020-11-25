@@ -69,6 +69,23 @@
 		    }
 		    
 		}
+        ,{
+            "path" : "pages/goods/goods",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "商品列表",
+                "enablePullDownRefresh": false
+            }
+            
+        }   ,{
+            "path" : "pages/detail/detail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "商品详情",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ], 
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
