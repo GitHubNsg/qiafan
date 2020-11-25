@@ -22,7 +22,7 @@ const fetch = (ret,address,param,method='get') => {
 				})
 			}else{
 				console.log(res.data);
-				ret(res.data);
+				ret( (res.data).data);
 			}
 			
 		},
