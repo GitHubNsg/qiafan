@@ -5,7 +5,11 @@
     "pages/cart/cart",
     "pages/mine/mine",
     "pages/help/help",
-    "pages/order/order"
+    "pages/order/order",
+    "pages/address/address",
+    "pages/address/add",
+    "pages/goods/goods",
+    "pages/detail/detail"
   ],
   "subPackages": [],
   "window": {
