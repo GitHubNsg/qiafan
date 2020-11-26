@@ -92,11 +92,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
-var components
+var components = {
+  vkUGoodsSkuPopup: function() {
+    return Promise.all(/*! import() | components/vk-u-goods-sku-popup/vk-u-goods-sku-popup */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/vk-u-goods-sku-popup/vk-u-goods-sku-popup")]).then(__webpack_require__.bind(null, /*! @/components/vk-u-goods-sku-popup/vk-u-goods-sku-popup.vue */ 119))
+  }
+}
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  if (!_vm._isMounted) {
+    _vm.e0 = function($event) {
+      _vm.sku_key = true
+    }
+  }
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -130,7 +139,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni, uniCloud) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
 //
 //
 //
@@ -163,20 +172,120 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
-var _default =
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var that;var _default =
 {
   data: function data() {
     return {
-      banner: [] };
+      banner: [],
+      goods: {},
+      sku_key: false };
 
   },
   onLoad: function onLoad(option) {
 
     var id = option.id;
-    var goods = JSON.parse(id);
-    console.log(goods);
-    this.banner = goods.slider;
-  } };exports.default = _default;
+    this.goods = JSON.parse(id);
+    console.log(this.goods);
+    this.banner = this.goods.slider;
+    that = this;
+
+  },
+  mounted: function mounted() {
+    that = this;
+
+  },
+  methods: {
+
+    // 加入购物车前的判断
+    addCartFn: function addCartFn(obj) {var
+
+      selectShop =
+      obj.selectShop;
+      // 模拟添加到购物车,请替换成你自己的添加到购物车逻辑
+      var res = {};
+      var name = selectShop.goods_name;
+      if (selectShop.sku_name != "默认") {
+        name += "-" + selectShop.sku_name;
+      }
+      res.msg = "$ {name}\u5DF2\u6DFB\u52A0\u5230\u8D2D\u7269\u8F66";
+      if (typeof obj.success == "function") obj.success(res);
+    },
+    // 加入购物车按钮
+    addCart: function addCart(selectShop) {
+      console.log("监听 - 加入购物车");
+      that.addCartFn({
+        selectShop: selectShop,
+        success: function success(res) {
+          // 实际业务时,请替换自己的加入购物车逻辑
+          that.toast(res.msg);
+        } });
+
+    },
+    // 立即购买
+    buyNow: function buyNow(selectShop) {
+      console.log("监听 - 立即购买");
+
+      this.$router.push({ path: '../pages/order/pay' });
+
+    },
+    /**
+        * 获取商品信息
+        * 这里可以看到每次打开SKU都会去重新请求商品信息,为的是每次打开SKU组件可以实时看到剩余库存
+        */
+    findGoodsInfo: function findGoodsInfo() {
+      var thus = this;
+      return new Promise(function (resolve, reject) {
+        resolve(thus.goods);
+
+        // 这里是获取商品信息的后端请求,可以用你自己的方式请求获取,本例子中用的是unicloud的云函数获取商品信息
+
+      });
+    },
+    toast: function toast(msg) {
+      uni.showToast({
+        title: msg,
+        icon: "none" });
+
+    },
+    callFunction: function callFunction(obj) {
+      uni.showLoading({
+        title: '请求中' });
+
+      uniCloud.callFunction({
+        name: 'findGoodsInfo',
+        data: {
+          goods_id: that.goods_id },
+
+        success: function success(res) {
+          console.log(res);
+          if (typeof obj.success == "function") obj.success(res.result);
+        },
+        fail: function fail(err) {
+          console.error(err);
+        },
+        complete: function complete() {
+          uni.hideLoading();
+        } });
+
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 117)["default"]))
 
 /***/ }),
 

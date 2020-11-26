@@ -263,4 +263,12 @@
 			transform: translateY(0px);
 		}
 	}
+	
+	.uni-mask,
+		.uni-modal,
+		uni-toast,
+		uni-modal,
+		.uni-actionsheet{
+			z-index: 999999 !important;
+		}
 </style>

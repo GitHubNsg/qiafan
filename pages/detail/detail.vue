@@ -41,13 +41,14 @@
 		</view>
 		<vk-u-goods-sku-popup
 		 v-model="sku_key"
-		  :custom-action="findGoodsInfo" :mode="1" border-radius="20" @add-cart="addCart"
+		  :custom-action="findGoodsInfo" :mode="3" border-radius="20" @add-cart="addCart"
 		 @buy-now="buyNow"></vk-u-goods-sku-popup>
 
 	</view>
 
 </template>
 <script>
+	var that;
 	export default {
 		data() {
 			return {
@@ -62,9 +63,15 @@
 			this.goods = JSON.parse(id);
 			console.log(this.goods);
 			this.banner = this.goods.slider;
+			that=this;
 
 		},
+		mounted() {
+			that = this;
+			 
+		},
 		methods: {
+			 
 			// 加入购物车前的判断
 			addCartFn(obj) {
 				let {
@@ -93,13 +100,9 @@
 			// 立即购买
 			buyNow(selectShop) {
 				console.log("监听 - 立即购买");
-				that.addCartFn({
-					selectShop: selectShop,
-					success: function(res) {
-						// 实际业务时,请替换自己的立即购买逻辑
-						that.toast("立即购买");
-					}
-				});
+			 
+			 this.$router.push({path:'../pages/order/pay'})
+			 
 			},
 			/**
 			 * 获取商品信息

@@ -18,7 +18,7 @@
 						<view class="specification-right">
 							<view class="price-content" :style="'color: '+priceColor+' ;'">
 								<text class="sign">¥</text>
-								<text class="price">{{ selectShop.price | priceFilter }}</text>
+								<text  >{{ selectShop.price_selling | priceFilter }}</text>
 							</view>
 							<view class="inventory">{{ stockText }}：{{ selectShop[stockName] || 0 }}</view>
 							<view class="choose" v-show="goodsInfo[specListName] && goodsInfo[specListName][0].name !== defaultSingleSkuName">已选：{{ selectArr.join(' ') }}</view>
@@ -34,7 +34,7 @@
 									@tap="skuClick(item_value, index1, $event, index2)"
 									v-for="(item_value, index2) in item.list"
 									:key="index2"
-									:class="[item_value.ishow ? 'noactived' : 'noactived', subIndex[index1] == index2 ? 'actived' : '']"
+									:class="[item_value.ishow ? '' : 'noactived', subIndex[index1] == index2 ? 'actived' : '']"
 									:style="[item_value.ishow ? '' : disableStyle,
 													subIndex[index1] == index2 ? activedStyle : '',
 													item_value.ishow ? btnStyle :''
@@ -110,7 +110,7 @@
 			// 商品id
 			goodsId:{
 				Type:String,
-				default:""
+				default:"goods_code"
 			},
 			// vk路由模式框架下的云函数地址
 			action:{
@@ -131,12 +131,12 @@
 			// 商品表id的字段名
 			goodsIdName:{
 				Type:String,
-				default:"id"
+				default:"goods_code"
 			},
 			// sku表id的字段名
 			skuIdName:{
 				Type:String,
-				default:"id"
+				default:"goods_sku"
 			},
 			// sku_list的字段名
 			skuListName:{
@@ -151,17 +151,17 @@
 			// stock的字段名
 			stockName:{
 				Type:String,
-				default:"stock"
+				default:"stock_total"
 			},
 			// sku_name的字段名
 			skuName:{
 				Type:String,
-				default:"sku_name"
+				default:"goods_spec"
 			},
 			// sku组合路径的字段名
 			skuArrName:{
 				Type:String,
-				default:"goods_spec"
+				default:"goods_spec_arr"
 			},
 			// 默认单规格时的规格组名称
 			defaultSingleSkuName:{
@@ -171,7 +171,7 @@
 			// 模式 1:都显示  2:只显示购物车 3:只显示立即购买 4:显示缺货按钮 默认 1
 			mode:{
 				Type:Number,
-				default:2
+				default:3
 			},
 			// 点击遮罩是否关闭组件 true 关闭 false 不关闭 默认true
 			maskCloseAble:{
@@ -186,7 +186,7 @@
 			// 商品缩略图字段名(未选择sku时)
 			goodsThumbName:{
 				Type:[String],
-				default:"goods_thumb"
+				default:"cover"
 			},
 			// 最小购买数量
 			minBuyNum:{
@@ -401,7 +401,7 @@
 			checkSelectShop(){
 				// 如果全部选完
 				if (that.selectArr.every(item => item != '')) {
-					that.selectShop = that.shopItemInfo[that.selectArr[0]+":"+that.selectArr[2]];
+					that.selectShop = that.shopItemInfo[that.selectArr];
 					that.selectNum = that.minBuyNum;
 				}else{
 					that.selectShop = {};
@@ -429,7 +429,7 @@
 						if (that.shopItemInfo.hasOwnProperty(choosed_copy2)) {
 							specList[i].list[j].ishow = true;
 						} else {
-							specList[i].list[j].ishow = true;
+							specList[i].list[j].ishow = false;
 						}
 					}
 				}
@@ -458,7 +458,7 @@
 				let result = skuList.reduce(
 					(arrs, items) => {
 						return arrs.concat(
-							items[that.skuArrName].split(';;').reduce(
+							items[that.skuArrName].reduce(
 								(arr, item) => {
 									return arr.concat(
 										arr.map(item2 => {
@@ -480,6 +480,7 @@
 			},
 			// 检测sku选项是否已全部选完,且有库存
 			checkSelectComplete(obj = {}){
+			 
 				let selectShop = that.selectShop;
 				if(selectShop && selectShop[that.skuIdName]){
 					// 判断库存
@@ -558,7 +559,7 @@
 				if(typeof n == "string"){
 					n = parseFloat(n);
 				}
-				return (n / 100).toFixed(2);
+				return (n ).toFixed(2);
 			}
 		},
 		// 计算属性

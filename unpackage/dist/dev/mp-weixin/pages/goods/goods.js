@@ -178,12 +178,22 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
     return {
       dataList: [] };
-
 
   },
   onLoad: function onLoad(option) {
@@ -192,7 +202,9 @@ var _default =
     this.$net.fetch(function (r) {
       console.log(r);
       thus.dataList = r.list;
-    }, this.$net.getGoods, { 'cate': id }, 'post');
+    }, this.$net.getGoods, {
+      'cate': id },
+    'post');
 
   },
   methods: {} };exports.default = _default;
