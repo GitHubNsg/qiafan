@@ -100,8 +100,16 @@
 			// 立即购买
 			buyNow(selectShop) {
 				console.log("监听 - 立即购买");
+				
+				var data=selectShop.goods_code
+				+"@"+selectShop.goods_sku
+				+"@"+selectShop.buy_num;
+				
+				this.$net.fetch(function(ret){
+					
+				},this.$net.addOrder,{'items':data},'post');
 			 
-			 this.$router.push({path:'../pages/order/pay'})
+			 // this.$router.push({path:'../pages/order/pay'})
 			 
 			},
 			/**

@@ -1947,6 +1947,7 @@ function normalizeComponent (
 var getSlider = "api.data/getSlider"; //轮播
 var getCate = "api.goods/getCate"; //类型
 var getGoods = "api.goods/getGoods"; //类型
+var addOrder = "api.auth/order/add"; // 
 
 var fetch = function fetch(ret, address, param) {var method = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'get';
   console.log(param);
@@ -1986,7 +1987,8 @@ var fetch = function fetch(ret, address, param) {var method = arguments.length >
   fetch: fetch,
   getSlider: getSlider,
   getCate: getCate,
-  getGoods: getGoods };exports.default = _default;
+  getGoods: getGoods,
+  addOrder: addOrder };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
