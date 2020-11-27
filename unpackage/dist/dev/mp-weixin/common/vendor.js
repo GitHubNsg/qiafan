@@ -1946,15 +1946,17 @@ function normalizeComponent (
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var host = "http://qiafan.applinzi.com/ThinkAdmin/public/index.php/data/";
 var getSlider = "api.data/getSlider"; //轮播
 var getCate = "api.goods/getCate"; //类型
-var getGoods = "api.goods/getGoods"; //类型
-var addOrder = "api.auth/order/add"; // 
-
+var getGoods = "api.goods/getGoods"; // 商品
+var addOrder = "api.auth.order/add"; // 
+var perfectOrder = "api.auth.order/perfect"; //  完成订单
+var address = "api.auth.address/get"; //  地址
+var getRegion = "api.goods/getRegion"; //区域
 var fetch = function fetch(ret, address, param) {var method = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'get';
   console.log(param);
   var header = {
     'content-type': 'application/x-www-form-urlencoded',
-    'token': uni.getStorageSync('token') };
-
+    'token': '921555d3ce6a3947bf7feae7f2bc719b' //uni.getStorageSync('token')
+  };
   uni.request({
     url: host + address, //仅为示例，并非真实接口地址。
     data: param,
@@ -1988,7 +1990,10 @@ var fetch = function fetch(ret, address, param) {var method = arguments.length >
   getSlider: getSlider,
   getCate: getCate,
   getGoods: getGoods,
-  addOrder: addOrder };exports.default = _default;
+  addOrder: addOrder,
+  perfectOrder: perfectOrder,
+  address: address,
+  getRegion: getRegion };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

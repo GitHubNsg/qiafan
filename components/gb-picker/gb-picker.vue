@@ -63,7 +63,7 @@
 			 var thus=this;
 			
 			this.$net.fetch(function(ret){
-				console.log(ret);
+			 
 				
 				thus.area=ret;
 				
@@ -160,19 +160,17 @@
 				}
 			},
 			setProvincesToRange () {
-				for(let [k,v] of this.area) {  
-				        that.provinces.push(v[k]);
-				    }  
-				 
-				// // this.provinces = this.area;
+				  
+				for(var index=0;index<this.area.length;index++){
+					 this.provinces.push(this.area[index]);
+				} 
 				
-				// this.$set(this.range, 0, this.provinces)
+				 this.$set(this.range, 0, this.provinces)
 			},
 			setPrefecturesToRange() {
 				const {range:[range], multiIndex:[index]} = this
-				
-				const provinceCode = range[index].code
-				this.prefectures = this.prefecturesFilter(provinceCode)
+				 
+				this.prefectures = this.prefecturesFilter(index)
 				if (this.prefectures.length - 1 < this.multiIndex[1]) {
 					
 					this.$set(this.multiIndex, 1, 0)
@@ -183,8 +181,7 @@
 			setCountiesToRange() {
 				const {range:[,range], multiIndex:[,index]} = this
 				
-				const prefectureCode = range[index].code
-				this.counties = this.countiesFilter(prefectureCode)
+				this.counties = this.countiesFilter(index)
 				if (this.counties.length - 1 < this.multiIndex[2]) {
 					this.$set(this.multiIndex, 2, 0)
 				}
@@ -193,15 +190,15 @@
 			},
 			// 过滤出需要的省
 			provincesFilter() {
-				return  [{'id':'1','name':'name'}];
+				return  this.area;
 			},
 			// 过滤出需要的市
-			prefecturesFilter(code) {
-			 	return  [{'id':'1','name':'name'}];
+			prefecturesFilter(index) {
+			 	return  this.area[index].subs;
 			},
 			// 过滤出需要的市区
 			countiesFilter(code) {
-					return  [{'id':'1','name':'name'}];
+					return  this.prefectures[code].subs;
 			},
 			rangeFilter(range, callback) {
 				if (range === '') {

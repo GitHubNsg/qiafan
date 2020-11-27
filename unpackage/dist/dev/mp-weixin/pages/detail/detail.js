@@ -243,14 +243,16 @@ var that;var _default =
       console.log("监听 - 立即购买");
 
       var data = selectShop.goods_code +
-      "@" + selectShop.goods_sku +
+      "@" + selectShop.goods_spec +
       "@" + selectShop.buy_num;
 
       this.$net.fetch(function (ret) {
 
+        that.$router.push({ path: '../order/pay?id=' + JSON.stringify(ret) });
+
       }, this.$net.addOrder, { 'items': data }, 'post');
 
-      // this.$router.push({path:'../pages/order/pay'})
+      // 
 
     },
     /**

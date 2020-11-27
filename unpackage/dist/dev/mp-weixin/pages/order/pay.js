@@ -125,11 +125,86 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!/Users/ruo/Documents/HBuilderProjects/qiafan/pages/order/pay.vue?vue&type=script&lang=js& ***!
   \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default =
+{
+  data: function data() {
+    return {
+      banner: [],
+      goods: {},
+      sku_key: false,
+      order: {} };
+
+  },
+  onLoad: function onLoad(option) {
+    var id = option.id;
+    console.log(id);
+    this.order = JSON.parse(id);
+    console.log(this.order);
+  },
+  methods: {
+    perfectOrder: function perfectOrder(e) {
+      var that = this;
+
+
+      this.$net.fetch(function (ret) {
+
+        // that.$router.push({path:'../order/pay?id='+JSON.stringify(ret)})
+
+      }, this.$net.perfectOrder,
+      { 'order_no': that.order.order_no, 'code': 'A2020091128272' }, 'post');
+    } } };exports.default = _default;
 
 /***/ })
 

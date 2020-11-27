@@ -95,6 +95,24 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  var l0 = _vm.__map(_vm.list, function(item, index) {
+    var $orig = _vm.__get_orig(item)
+
+    var g0 = JSON.stringify(item)
+    return {
+      $orig: $orig,
+      g0: g0
+    }
+  })
+
+  _vm.$mp.data = Object.assign(
+    {},
+    {
+      $root: {
+        l0: l0
+      }
+    }
+  )
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -138,10 +156,45 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
-    return {};
+    return {
+      'list': {} };
+
+  },
+  onLoad: function onLoad() {
+
+    var thus = this;
+    this.$net.fetch(function (ret) {
+      thus.list = ret.list;
+      // that.$router.push({path:'../order/pay?id='+JSON.stringify(ret)})
+
+    }, this.$net.address, {}, 'post');
+
+
   },
   methods: {} };exports.default = _default;
 

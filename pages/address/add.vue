@@ -13,9 +13,12 @@
 			</view>
 			<view class="cu-form-group">
 				<view class="title">所在地区</view>
-				<gb-picker @update="update" @change="change">
-					<text>{{text}}</text>
-				</gb-picker>
+				 
+				<view @click="chooseAddr"  >
+					<text>{{areaRegion}}</text>
+				</view>
+				 
+				 
 			</view>
 			<view class="cu-form-group">
 				<view class="title">详细地址</view>
@@ -30,7 +33,8 @@
 
 
 		<view class="container">
-		
+		 
+		<n-address ref="addr" @up-data="upData" :fValue="fValue" :fStyles="fStyles"></n-address>
 		</view>
 
 	</view>
@@ -41,7 +45,13 @@
 		data() {
 			return {
 				'address': {},
-				text: '',
+				areaRegion: '选择地址',
+				fValue:[0,0,0],
+				fStyles: {
+					'confirmText':'确定',
+					'canceltext':'取消',
+					'columnFontSize':'36rpx'
+				}
 			};
 		},
 
@@ -54,16 +64,22 @@
 		},
 
 		methods: {
+			 chooseAddr() {
+			        this.$refs['addr'].popUp()
+			    },
+				 upData (e) {
+				        console.log(e)
+						this.areaRegion =e.region;
+				    },
 			save: function() {
-				console.log('save')
+				 this.$net.fetch(function(ret){
+				  
+				
+				  
+				 	
+				 },this.$net.getRegion);	
 			},
-			update(e) {
-				this.text = e.name.join('/')
-			},
-			change(e) {
-				console.log(e.code)
-				this.text = e.name.join('/')
-			}
+			 
 
 
 

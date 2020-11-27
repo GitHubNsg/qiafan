@@ -162,14 +162,37 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
-    return {};
+    return {
+      'address': {},
+      text: '' };
+
   },
+
+  onLoad: function onLoad(option) {
+
+    var id = option.id;
+    this.address = JSON.parse(id);
+
+
+  },
+
   methods: {
     save: function save() {
       console.log('save');
+    },
+    update: function update(e) {
+      this.text = e.name.join('/');
+    },
+    change: function change(e) {
+      console.log(e.code);
+      this.text = e.name.join('/');
     } } };exports.default = _default;
 
 /***/ })
