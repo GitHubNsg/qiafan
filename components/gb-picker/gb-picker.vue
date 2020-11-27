@@ -66,15 +66,21 @@
 				console.log(ret);
 				
 				thus.area=ret;
+				
+				
+				thus.setProvincesToRange()
+				 
+				thus.setPrefecturesToRange()
+				thus.setCountiesToRange()
+				thus.initPicker()
+				
+				
 			},this.$net.getRegion);
 			
 			
-			this.setProvincesToRange()
-			this.setPrefecturesToRange()
-			this.setCountiesToRange()
 		},
 		beforeMount () {
-			this.initPicker()
+			
 		},
 		watch: {
 			code (newVal, oldVal) {
@@ -154,9 +160,13 @@
 				}
 			},
 			setProvincesToRange () {
-				this.provinces = this.area;
+				for(let [k,v] of this.area) {  
+				        that.provinces.push(v[k]);
+				    }  
+				 
+				// // this.provinces = this.area;
 				
-				this.$set(this.range, 0, this.provinces)
+				// this.$set(this.range, 0, this.provinces)
 			},
 			setPrefecturesToRange() {
 				const {range:[range], multiIndex:[index]} = this
