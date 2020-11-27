@@ -1,9 +1,11 @@
 const host = "http://qiafan.applinzi.com/ThinkAdmin/public/index.php/data/"; 
 const getSlider = "api.data/getSlider";  //轮播
 const getCate = "api.goods/getCate";  //类型
-const getGoods = "api.goods/getGoods";  //类型
+const getGoods = "api.goods/getGoods";  // 商品
 const addOrder = "api.auth.order/add";  // 
-
+const perfectOrder = "api.auth.order/perfect";  //  完成订单
+const address = "api.auth.address/get";  //  地址
+const getRegion="api.goods/getRegion";//区域
 const fetch = (ret,address,param,method='get') => {
 	console.log(param)
 	var header={
@@ -44,4 +46,7 @@ export default {
 	getCate,
 	getGoods,
 	addOrder,
+	perfectOrder,
+	address,
+	getRegion
 }
