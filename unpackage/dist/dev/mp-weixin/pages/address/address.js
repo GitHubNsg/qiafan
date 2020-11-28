@@ -99,9 +99,11 @@ var render = function() {
     var $orig = _vm.__get_orig(item)
 
     var g0 = JSON.stringify(item)
+    var g1 = JSON.stringify(item)
     return {
       $orig: $orig,
-      g0: g0
+      g0: g0,
+      g1: g1
     }
   })
 
@@ -146,7 +148,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
 //
 //
 //
@@ -182,21 +184,30 @@ var _default =
 {
   data: function data() {
     return {
-      'list': {} };
+      list: {} };
 
   },
   onLoad: function onLoad() {
-
     var thus = this;
-    this.$net.fetch(function (ret) {
+    this.$net.fetch(
+    function (ret) {
       thus.list = ret.list;
-      // that.$router.push({path:'../order/pay?id='+JSON.stringify(ret)})
 
-    }, this.$net.address, {}, 'post');
-
+    },
+    this.$net.address,
+    {},
+    'post');
 
   },
-  methods: {} };exports.default = _default;
+  methods: {
+    select: function select(e) {
+      var pages = getCurrentPages();
+      var prevPage = pages[pages.length - 2]; //上一个页面
+
+      prevPage.address = e.currentTarget.id;
+      uni.navigateBack();
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ })
 

@@ -90,7 +90,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
-var components
+var components = {
+  nAddress: function() {
+    return __webpack_require__.e(/*! import() | components/n-address/n-address */ "components/n-address/n-address").then(__webpack_require__.bind(null, /*! @/components/n-address/n-address.vue */ 130))
+  }
+}
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -166,12 +170,22 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
     return {
       'address': {},
-      text: '' };
+      areaRegion: '选择地址',
+      fValue: [0, 0, 0],
+      fStyles: {
+        'confirmText': '确定',
+        'canceltext': '取消',
+        'columnFontSize': '36rpx' } };
+
 
   },
 
@@ -184,15 +198,17 @@ var _default =
   },
 
   methods: {
+    chooseAddr: function chooseAddr() {
+      this.$refs['addr'].popUp();
+    },
+    upData: function upData(e) {
+      console.log(e);
+      this.areaRegion = e.region;
+    },
     save: function save() {
-      console.log('save');
-    },
-    update: function update(e) {
-      this.text = e.name.join('/');
-    },
-    change: function change(e) {
-      console.log(e.code);
-      this.text = e.name.join('/');
+      this.$net.fetch(function (ret) {
+
+      }, this.$net.getRegion);
     } } };exports.default = _default;
 
 /***/ })

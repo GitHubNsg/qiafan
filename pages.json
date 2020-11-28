@@ -20,7 +20,7 @@
         ,{
             "path" : "pages/cart/cart",
             "style" : {
-                "enablePullDownRefresh": false,
+                "enablePullDownRefresh": true,
                 "navigationBarTitleText": "购物车"
             }
             
@@ -38,7 +38,7 @@
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "帮助中心",
-                "enablePullDownRefresh": false
+                "enablePullDownRefresh": true
             }
             
         }
@@ -47,7 +47,7 @@
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "订单管理",
-                "enablePullDownRefresh": false
+                "enablePullDownRefresh": true
             }
             
         }
@@ -56,7 +56,7 @@
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "收货地址",
-                "enablePullDownRefresh": false
+                "enablePullDownRefresh": true
             }
             
         },
@@ -74,7 +74,7 @@
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "商品列表",
-                "enablePullDownRefresh": false
+                "enablePullDownRefresh": true
             }
             
         }   ,{

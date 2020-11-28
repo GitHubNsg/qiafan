@@ -72,10 +72,7 @@
 						this.areaRegion =e.region;
 				    },
 			save: function() {
-				 this.$net.fetch(function(ret){
-				  
-				
-				  
+				 this.$net.fetch(function(ret){ 
 				 	
 				 },this.$net.getRegion);	
 			},

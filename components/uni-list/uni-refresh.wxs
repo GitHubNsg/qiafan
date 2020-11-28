@@ -3,7 +3,8 @@ var pullDown = {
     maxHeight: 200,
     callRefresh: 'onrefresh',
     callPullingDown: 'onpullingdown',
-    refreshSelector: '.uni-refresh'
+    refreshSelector: '.uni-refresh',
+	
 };
 
 function ready(newValue, oldValue, ownerInstance, instance) {

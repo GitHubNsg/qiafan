@@ -105,11 +105,11 @@
 /******/
 /******/
 /******/ 		// mini-css-extract-plugin CSS loading
-/******/ 		var cssChunks = {"pages/basics/home":1,"pages/component/home":1,"pages/plugin/home":1,"components/vk-u-goods-sku-popup/vk-u-goods-sku-popup":1,"components/vk-u-number-box/vk-u-number-box":1};
+/******/ 		var cssChunks = {"pages/basics/home":1,"pages/component/home":1,"pages/plugin/home":1,"components/uni-list-item/uni-list-item":1,"components/uni-list/uni-list":1,"components/n-address/n-address":1,"components/vk-u-goods-sku-popup/vk-u-goods-sku-popup":1,"components/uni-icons/uni-icons":1,"components/uni-badge/uni-badge":1,"components/n-transition/n-transition":1,"components/vk-u-number-box/vk-u-number-box":1};
 /******/ 		if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 		else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 			promises.push(installedCssChunks[chunkId] = new Promise(function(resolve, reject) {
-/******/ 				var href = "" + ({"colorui/components/cu-custom":"colorui/components/cu-custom","pages/basics/home":"pages/basics/home","pages/component/home":"pages/component/home","pages/plugin/home":"pages/plugin/home","components/vk-u-goods-sku-popup/vk-u-goods-sku-popup":"components/vk-u-goods-sku-popup/vk-u-goods-sku-popup","components/vk-u-number-box/vk-u-number-box":"components/vk-u-number-box/vk-u-number-box"}[chunkId]||chunkId) + ".wxss";
+/******/ 				var href = "" + ({"colorui/components/cu-custom":"colorui/components/cu-custom","pages/basics/home":"pages/basics/home","pages/component/home":"pages/component/home","pages/plugin/home":"pages/plugin/home","components/uni-list-item/uni-list-item":"components/uni-list-item/uni-list-item","components/uni-list/uni-list":"components/uni-list/uni-list","components/n-address/n-address":"components/n-address/n-address","components/vk-u-goods-sku-popup/vk-u-goods-sku-popup":"components/vk-u-goods-sku-popup/vk-u-goods-sku-popup","components/uni-icons/uni-icons":"components/uni-icons/uni-icons","components/uni-badge/uni-badge":"components/uni-badge/uni-badge","components/n-transition/n-transition":"components/n-transition/n-transition","components/vk-u-number-box/vk-u-number-box":"components/vk-u-number-box/vk-u-number-box"}[chunkId]||chunkId) + ".wxss";
 /******/ 				var fullhref = __webpack_require__.p + href;
 /******/ 				var existingLinkTags = document.getElementsByTagName("link");
 /******/ 				for(var i = 0; i < existingLinkTags.length; i++) {
