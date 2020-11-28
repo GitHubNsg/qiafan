@@ -104,6 +104,42 @@
             }
             
         }
+        ,{
+            "path" : "pages/invited/invited",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我的邀请人",
+                "enablePullDownRefresh": true
+            }
+            
+        },
+		{
+		    "path" : "pages/invited/bind",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "绑定邀请人",
+		        "enablePullDownRefresh": true
+		    }
+		    
+		},
+		{
+		    "path" : "pages/order/detail",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "订单详情",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		},
+		{
+		    "path" : "pages/help/news",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "文章详情",
+		        "enablePullDownRefresh": true
+		    }
+		    
+		}
     ], 
 	"globalStyle": {
 		"navigationBarTextStyle": "white",

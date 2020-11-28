@@ -90,14 +90,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
-var components = {
-  uniList: function() {
-    return __webpack_require__.e(/*! import() | components/uni-list/uni-list */ "components/uni-list/uni-list").then(__webpack_require__.bind(null, /*! @/components/uni-list/uni-list.vue */ 122))
-  },
-  uniListItem: function() {
-    return __webpack_require__.e(/*! import() | components/uni-list-item/uni-list-item */ "components/uni-list-item/uni-list-item").then(__webpack_require__.bind(null, /*! @/components/uni-list-item/uni-list-item.vue */ 129))
-  }
-}
+var components
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -107,10 +100,12 @@ var render = function() {
 
     var g0 = JSON.stringify(item)
     var g1 = JSON.stringify(item)
+    var g2 = JSON.stringify(item)
     return {
       $orig: $orig,
       g0: g0,
-      g1: g1
+      g1: g1,
+      g2: g2
     }
   })
 
@@ -183,10 +178,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 var _default =
 {
   data: function data() {
@@ -198,8 +189,6 @@ var _default =
     this.loadData();
   },
 
-
-
   methods: {
     onPullDownRefresh: function onPullDownRefresh() {
       this.list = [];
@@ -210,7 +199,6 @@ var _default =
       this.$net.fetch(
       function (ret) {
         thus.list = ret.list;
-
       },
       this.$net.address,
       {},
@@ -219,11 +207,29 @@ var _default =
     },
 
     select: function select(e) {
-      var pages = getCurrentPages();
-      var prevPage = pages[pages.length - 2]; //上一个页面
+      try {
+        var pages = getCurrentPages();
+        var prevPage = pages[pages.length - 2]; //上一个页面
 
-      prevPage.address = e.currentTarget.id;
-      uni.navigateBack();
+        prevPage.address = e.currentTarget.id;
+        uni.navigateBack();
+      } catch (e9) {
+        uni.navigateTo({
+          url: '../address/add?id=' + e.currentTarget.id });
+
+      }
+    },
+    del: function del(e) {
+      var thus = this;
+      this.$net.fetch(
+      function (ret) {
+        thus.list = ret.list;
+        thus.loadData();
+      },
+      this.$net.delAddress,
+      { code: e.currentTarget.id },
+      'post');
+
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

@@ -188,6 +188,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -201,7 +205,7 @@ var _default =
   },
   onLoad: function onLoad(option) {
     var id = option.id;
-    console.log(id);
+
     this.order = JSON.parse(id);
     console.log(this.order);
   },

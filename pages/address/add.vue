@@ -70,11 +70,32 @@
 				 upData (e) {
 				        console.log(e)
 						this.areaRegion =e.region;
+						this.address.province=e.regionArr[0];
+						this.address.city=e.regionArr[1];
+						this.address.area=e.regionArr[2];
 				    },
 			save: function() {
-				 this.$net.fetch(function(ret){ 
+				
+				if(this.address.area==undefined){
+					uni.showToast({
+						title:'请选择地址',
+						icon:'none'
+					});
+					return;
+				}
+				
+				
+				
+				 this.$net.fetch(function(ret){
+					 uni.showToast({
+					 	title:'ok',
+						icon:'none'
+					 });
+					 uni.navigateBack({
+					 	animationDuration:300
+					 })
 				 	
-				 },this.$net.getRegion);	
+				 }, this.address.code==undefined? this.$net.addAddress:this.$net.stateAddress,this.address,'post');	
 			},
 			 
 

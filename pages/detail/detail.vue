@@ -30,18 +30,19 @@
 					</view>
 					客服
 				</button>
-				<view class="action">
-					<view class="cuIcon-cart">
-					</view>
-					购物车
+				<view  class="action"  @click="gotoCart">
+					 
+						<view class="cuIcon-cart">
+						</view>
+						购物车
+				 
 				</view>
-				<view class="bg-orange submit">加入购物车</view>
 				<view class="bg-red submit" @click="sku_key = true">立即订购</view>
 			</view>
 		</view>
 		<vk-u-goods-sku-popup
 		 v-model="sku_key"
-		  :custom-action="findGoodsInfo" :mode="3" border-radius="20" @add-cart="addCart"
+		  :custom-action="findGoodsInfo" :mode="1" border-radius="20" @add-cart="addCart"
 		 @buy-now="buyNow"></vk-u-goods-sku-popup>
 
 	</view>
@@ -71,6 +72,15 @@
 			 
 		},
 		methods: {
+			 gotoCart(){
+				 console.log(123);
+				 uni.reLaunch({
+				 	url:'../cart/cart'
+				 })
+				 // uni.navigateTo({
+				 // 	url:'../cate/cate'
+				 // })
+			 },
 			 
 			// 加入购物车前的判断
 			addCartFn(obj) {
@@ -99,15 +109,17 @@
 			},
 			// 立即购买
 			buyNow(selectShop) {
-				console.log("监听 - 立即购买");
-				
+				 
 				var data=selectShop.goods_code
 				+"@"+selectShop.goods_spec
 				+"@"+selectShop.buy_num;
 				
 				this.$net.fetch(function(ret){
 					
-					that.$router.push({path:'../order/pay?id='+JSON.stringify(ret)})
+					uni.navigateTo({
+						url:'../order/pay?id='+JSON.stringify(ret)
+					})
+					// that.$router.push({path:})
 					
 				},this.$net.addOrder,{'items':data},'post');
 			 

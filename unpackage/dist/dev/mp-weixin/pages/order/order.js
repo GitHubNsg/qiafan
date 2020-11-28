@@ -90,18 +90,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
-var components = {
-  uniList: function() {
-    return __webpack_require__.e(/*! import() | components/uni-list/uni-list */ "components/uni-list/uni-list").then(__webpack_require__.bind(null, /*! @/components/uni-list/uni-list.vue */ 122))
-  },
-  uniListItem: function() {
-    return __webpack_require__.e(/*! import() | components/uni-list-item/uni-list-item */ "components/uni-list-item/uni-list-item").then(__webpack_require__.bind(null, /*! @/components/uni-list-item/uni-list-item.vue */ 129))
-  }
-}
+var components
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  var l0 = _vm.__map(_vm.list, function(item, __i0__) {
+    var $orig = _vm.__get_orig(item)
+
+    var g0 = JSON.stringify(item.items)
+    return {
+      $orig: $orig,
+      g0: g0
+    }
+  })
+
+  _vm.$mp.data = Object.assign(
+    {},
+    {
+      $root: {
+        l0: l0
+      }
+    }
+  )
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -184,13 +195,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
     return {
       waterfall: '',
       list: [],
-      status: '1' };
+      status: '1',
+      _isEnded: false,
+      page: 1 };
 
   },
   onLoad: function onLoad(option) {
@@ -204,20 +227,30 @@ var _default =
       this.list = [];
       this.loadData();
     },
+    detail: function detail(e) {
+      console.log('00');
+      uni.navigateTo({
+        url: './detail?id=' + e.currentTarget.id });
+
+    },
     loadData: function loadData() {
       var thus = this;
       this.$net.fetch(
       function (ret) {
-        uni.stopPullDownRefresh();
+        if (ret.page.pages <= ret.page.current) {
+          thus._isEnded = true;
+        }
         thus.list = thus.list.concat(ret.list);
       },
       this.$net.getOrder,
-      { status: thus.status },
+      { status: thus.status, page: thus.page },
       'post');
 
     },
     onPullDownRefresh: function onPullDownRefresh() {
       this.list = [];
+      this.page = 1;
+      this._isEnded = false;
       this.loadData();
     },
 
@@ -230,10 +263,26 @@ var _default =
 
     loadMore: function loadMore() {
       if (this._isEnded) {
+        uni.showToast({
+          title: '暂无更多数据',
+          icon: 'none' });
+
         return;
       }
-      console.log('99');
-      // this._execLoadData();
+      this.page++;
+      this.loadData();
+    },
+    pay: function pay(e) {
+      var thus = this;
+      this.$net.fetch(
+      function (ret) {
+        thus.onPullDownRefresh();
+      },
+      this.$net.paymentOrder,
+      { order_no: e.currentTarget.id },
+      'post');
+
+
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

@@ -207,53 +207,60 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 var _default =
 {
   data: function data() {
     return {
-      cuIconList: [{
-        cuIcon: 'cardboardfill',
-        color: 'red',
-        badge: 120,
-        name: 'VR' }],
+      info: {
+        headimg: '',
+        nickname: '',
+        username: '' } };
 
-      modalName: null,
-      gridCol: 3,
-      gridBorder: false,
-      menuBorder: false,
-      menuArrow: false,
-      menuCard: false,
-      skin: false,
-      listTouchStart: 0,
-      listTouchDirection: null };
 
+  },
+  onLoad: function onLoad() {
+    this.load();
   },
   methods: {
     login: function login() {
       uni.navigateTo({
         url: '../login/login' });
+
+    },
+    load: function load() {
+      var thus = this;
+      this.$net.fetch(
+      function (ret) {
+        thus.info = ret;
+        uni.setStorageSync('info', JSON.stringify(thus.info));
+      },
+      this.$net.getUserInfo,
+      {},
+      'post');
+
+    },
+    onPullDownRefresh: function onPullDownRefresh() {
+
+      this.load();
+    },
+    exit: function exit() {
+      uni.showModal({
+        cancelText: '取消',
+        confirmColor: '退出',
+        content: '是否退出?',
+        title: '提示',
+
+        success: function success(ret) {
+          console.log(ret);
+          if (ret.confirm) {
+            uni.clearStorage();
+
+            uni.navigateTo({
+              url: '../login/login' });
+
+          } else {
+          }
+        } });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

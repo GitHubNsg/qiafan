@@ -132,7 +132,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
 //
 //
 //
@@ -204,12 +204,34 @@ var _default =
     upData: function upData(e) {
       console.log(e);
       this.areaRegion = e.region;
+      this.address.province = e.regionArr[0];
+      this.address.city = e.regionArr[1];
+      this.address.area = e.regionArr[2];
     },
     save: function save() {
-      this.$net.fetch(function (ret) {
 
-      }, this.$net.getRegion);
+      if (this.address.area == undefined) {
+        uni.showToast({
+          title: '请选择地址',
+          icon: 'none' });
+
+        return;
+      }
+
+
+
+      this.$net.fetch(function (ret) {
+        uni.showToast({
+          title: 'ok',
+          icon: 'none' });
+
+        uni.navigateBack({
+          animationDuration: 300 });
+
+
+      }, this.address.code == undefined ? this.$net.addAddress : this.$net.stateAddress, this.address, 'post');
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ })
 

@@ -11,7 +11,11 @@
     "pages/goods/goods",
     "pages/detail/detail",
     "pages/order/pay",
-    "pages/login/login"
+    "pages/login/login",
+    "pages/invited/invited",
+    "pages/invited/bind",
+    "pages/order/detail",
+    "pages/help/news"
   ],
   "subPackages": [],
   "window": {

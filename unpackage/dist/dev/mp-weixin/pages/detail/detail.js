@@ -188,6 +188,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 var that;var _default =
 {
@@ -212,6 +213,15 @@ var that;var _default =
 
   },
   methods: {
+    gotoCart: function gotoCart() {
+      console.log(123);
+      uni.reLaunch({
+        url: '../cart/cart' });
+
+      // uni.navigateTo({
+      // 	url:'../cate/cate'
+      // })
+    },
 
     // 加入购物车前的判断
     addCartFn: function addCartFn(obj) {var
@@ -240,7 +250,6 @@ var that;var _default =
     },
     // 立即购买
     buyNow: function buyNow(selectShop) {
-      console.log("监听 - 立即购买");
 
       var data = selectShop.goods_code +
       "@" + selectShop.goods_spec +
@@ -248,7 +257,10 @@ var that;var _default =
 
       this.$net.fetch(function (ret) {
 
-        that.$router.push({ path: '../order/pay?id=' + JSON.stringify(ret) });
+        uni.navigateTo({
+          url: '../order/pay?id=' + JSON.stringify(ret) });
+
+        // that.$router.push({path:})
 
       }, this.$net.addOrder, { 'items': data }, 'post');
 

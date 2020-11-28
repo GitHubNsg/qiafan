@@ -5,14 +5,25 @@ const getGoods = "api.goods/getGoods";  // 商品
 const addOrder = "api.auth.order/add";  // 
 const getOrder = "api.auth.order/get";  // 
 const perfectOrder = "api.auth.order/perfect";  //  完成订单
+const paymentOrder= "api.auth.order/payment";  //  完成订单
+
 const address = "api.auth.address/get";  //  地址
+const addAddress = "api.auth.address/set";  //  地址
+const delAddress = "api.auth.address/remove";  //  地址
+const stateAddress = "api.auth.address/state";  //  地址
+
 const getRegion="api.goods/getRegion";//区域
 
 const wxSession="api.wxapp/session";//区域
 const loginin="api.login/in";//
+const bindFrom="api.auth.center/bindFrom";
+const invited="api.auth.center/getFrom";
+const getUserInfo="api.auth.center/get";
 
-
-
+const getNewsItem="api.news/getItem";
+const getNewsComment="api.news/getComment";
+const getNewsMark="api.news/getMark";
+const addComment="api.auth.news/addComment";
 
 const fetch = (ret,address,param,method='get') => {
 	console.log(param)
@@ -55,7 +66,7 @@ const fetch = (ret,address,param,method='get') => {
 		header:header,
 		method:method,
 		success:  (res)=> {
-		uni.hideLoading();
+		 
 			
 			if(res.statusCode!=200){
 				uni.navigateTo({
@@ -82,6 +93,10 @@ const fetch = (ret,address,param,method='get') => {
 			uni.navigateTo({
 				url:'/pages/public/login'
 			})
+		},complete() {
+			
+			uni.hideLoading();
+			uni.stopPullDownRefresh();
 		}
 	});
 
@@ -97,5 +112,16 @@ export default {
 	getRegion,
 	getOrder,
 	wxSession,
-	loginin
+	loginin,
+	invited,
+	bindFrom,
+	addAddress,
+	delAddress,
+	stateAddress,
+	getUserInfo,
+	paymentOrder,
+	getNewsItem,
+	getNewsComment,
+	getNewsMark,
+	addComment
 }

@@ -193,7 +193,6 @@ var _default =
       var thus = this;
       this.$net.fetch(
       function (r) {
-        uni.stopPullDownRefresh();
         if (r.page.pages <= r.page.current) {
           thus._isEnded = true;
         }
@@ -220,7 +219,6 @@ var _default =
       this.loadMore();
     },
     loadMore: function loadMore() {
-      this.page++;
       if (this._isEnded) {
         uni.showToast({
           title: '暂无更多数据',
@@ -228,8 +226,9 @@ var _default =
 
         return;
       }
+      this.page++;
       this.loadData();
-      console.log('99');
+
       // this._execLoadData();
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

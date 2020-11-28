@@ -45,7 +45,6 @@ export default {
 			var thus = this;
 			this.$net.fetch(
 				function(r) {
-					uni.stopPullDownRefresh();
 					if(r.page.pages<=r.page.current){
 						thus._isEnded=true;
 					}
@@ -72,7 +71,6 @@ export default {
 			this.loadMore();
 		},
 		loadMore() {
-			this.page++;
 			if (this._isEnded) {
 				uni.showToast({
 					title:'暂无更多数据',
@@ -80,8 +78,9 @@ export default {
 				})
 				return;
 			}
+			this.page++;
 			this.loadData();
-			console.log('99');
+			 
 			// this._execLoadData();
 		}
 	}

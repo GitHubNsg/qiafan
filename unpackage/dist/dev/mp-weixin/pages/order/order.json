@@ -1,8 +1,5 @@
 {
   "navigationBarTitleText": "订单管理",
   "enablePullDownRefresh": true,
-  "usingComponents": {
-    "uni-list": "/components/uni-list/uni-list",
-    "uni-list-item": "/components/uni-list-item/uni-list-item"
-  }
+  "usingComponents": {}
 }
