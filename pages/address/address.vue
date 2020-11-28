@@ -1,9 +1,9 @@
 <template>
 	<view>
 		<scroll-view scroll-y>
-			<view class="cu-list menu ">
-				<view class="cu-item  padding-lg" v-for="(item, index) in list">
-					<view  >
+			<uni-list class="cu-list menu ">
+				<uni-list-item class="cu-item  padding-lg" v-for="(item, index) in list">
+					<view  slot="body" >
 						
 						<view class="content" @click="select" :id="JSON.stringify(item)">
 							<view class="padding-xs">
@@ -15,15 +15,15 @@
 							
 						</view>
 
-						<view>
+						<view class="uni-footer">
 							<navigator class="content" :url="'../address/add?id='+ JSON.stringify(item)" open-type="redirect">
 								<text >编辑</text>
 							</navigator>
 							<text>删除</text>
 						</view>
 					</view>
-				</view>
-			</view>
+				</uni-list-item>
+			</uni-list>
 		</scroll-view>
 
 		<navigator class="content bottom-fix " url="../address/add" hover-class="none"><button class="text-white bg-red  no-border submit">新增</button></navigator>
@@ -38,6 +38,17 @@ export default {
 		};
 	},
 	onLoad() {
+		this.loadData();
+	},
+	
+	
+	
+	methods: {
+		onPullDownRefresh() {
+			this.list = [];
+			this.loadData();
+		},
+		loadData(){
 		var thus = this;
 		this.$net.fetch(
 			function(ret) {
@@ -47,9 +58,9 @@ export default {
 			this.$net.address,
 			{},
 			'post'
-		);
-	},
-	methods: {
+		);	
+		},
+		
 		select(e) {
 			let pages = getCurrentPages();
 			let prevPage = pages[pages.length - 2]; //上一个页面

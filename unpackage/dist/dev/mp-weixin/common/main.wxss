@@ -4654,6 +4654,8 @@ scroll-view.cu-steps .cu-item {
 .cuIcon-btn:before {
 	content: "\e601";
 }
+.uni-page-refresh-inner {
+}
 .nav-list {
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -4678,7 +4680,7 @@ scroll-view.cu-steps .cu-item {
 	z-index: 1;
 }
 .nav-li::after {
-	content: "";
+	content: '';
 	position: absolute;
 	z-index: -1;
 	background-color: inherit;
@@ -4713,7 +4715,7 @@ scroll-view.cu-steps .cu-item {
 	position: relative;
 }
 .nav-name::before {
-	content: "";
+	content: '';
 	position: absolute;
 	display: block;
 	width: 40rpx;
@@ -4724,7 +4726,7 @@ scroll-view.cu-steps .cu-item {
 	opacity: 0.5;
 }
 .nav-name::after {
-	content: "";
+	content: '';
 	position: absolute;
 	display: block;
 	width: 100rpx;
@@ -4795,10 +4797,10 @@ scroll-view.cu-steps .cu-item {
 }
 }
 .uni-mask,
-	.uni-modal,
-	uni-toast,
-	uni-modal,
-	.uni-actionsheet{
-		z-index: 999999 !important;
+.uni-modal,
+uni-toast,
+uni-modal,
+.uni-actionsheet {
+	z-index: 999999 !important;
 }
 

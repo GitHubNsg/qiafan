@@ -105,6 +105,24 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  var l0 = _vm.__map(_vm.dataList, function(item, index) {
+    var $orig = _vm.__get_orig(item)
+
+    var g0 = JSON.stringify(item)
+    return {
+      $orig: $orig,
+      g0: g0
+    }
+  })
+
+  _vm.$mp.data = Object.assign(
+    {},
+    {
+      $root: {
+        l0: l0
+      }
+    }
+  )
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -136,7 +154,30 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -159,7 +200,11 @@ var _default =
       swiperList: [],
       dotStyle: false,
       towerStart: 0,
-      direction: '' };
+      direction: '',
+      dataList: [],
+      cate: '',
+      page: 1,
+      _isEnded: false };
 
   },
   onLoad: function onLoad() {
@@ -172,9 +217,57 @@ var _default =
       console.log(thus.swiperList);
 
     }, this.$net.getSlider);
+    thus.loadData();
 
   },
   methods: {
+
+
+
+    loadData: function loadData() {
+
+      var thus = this;
+      this.$net.fetch(
+      function (r) {
+        uni.stopPullDownRefresh();
+        if (r.page.pages <= r.page.current) {
+          thus._isEnded = true;
+        }
+        thus.dataList = thus.dataList.concat(r.list);
+      },
+      this.$net.getGoods,
+      {
+        cate: thus.cate,
+        'page': thus.page },
+
+      'post');
+
+    },
+    onPullDownRefresh: function onPullDownRefresh() {
+      this.page = 1;
+      this._isEnded = false;
+      this.dataList = [];
+      this.loadData();
+    },
+    /**
+        * 上拉加载回调函数
+        */
+    onReachBottom: function onReachBottom() {
+      this.loadMore();
+    },
+    loadMore: function loadMore() {
+      this.page++;
+      if (this._isEnded) {
+        uni.showToast({
+          title: '暂无更多数据',
+          icon: 'none' });
+
+        return;
+      }
+      this.loadData();
+      console.log('99');
+      // this._execLoadData();
+    },
 
     // towerSwiper
     // 初始化towerSwiper
@@ -223,6 +316,7 @@ var _default =
       this.direction = "";
       this.swiperList = this.swiperList;
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 /* 18 */

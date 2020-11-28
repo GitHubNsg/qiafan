@@ -90,7 +90,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
-var components
+var components = {
+  uniList: function() {
+    return __webpack_require__.e(/*! import() | components/uni-list/uni-list */ "components/uni-list/uni-list").then(__webpack_require__.bind(null, /*! @/components/uni-list/uni-list.vue */ 122))
+  },
+  uniListItem: function() {
+    return __webpack_require__.e(/*! import() | components/uni-list-item/uni-list-item */ "components/uni-list-item/uni-list-item").then(__webpack_require__.bind(null, /*! @/components/uni-list-item/uni-list-item.vue */ 129))
+  }
+}
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -188,18 +195,29 @@ var _default =
 
   },
   onLoad: function onLoad() {
-    var thus = this;
-    this.$net.fetch(
-    function (ret) {
-      thus.list = ret.list;
+    this.loadData();
+  },
+
+
+
+  methods: {
+    onPullDownRefresh: function onPullDownRefresh() {
+      this.list = [];
+      this.loadData();
+    },
+    loadData: function loadData() {
+      var thus = this;
+      this.$net.fetch(
+      function (ret) {
+        thus.list = ret.list;
+
+      },
+      this.$net.address,
+      {},
+      'post');
 
     },
-    this.$net.address,
-    {},
-    'post');
 
-  },
-  methods: {
     select: function select(e) {
       var pages = getCurrentPages();
       var prevPage = pages[pages.length - 2]; //上一个页面

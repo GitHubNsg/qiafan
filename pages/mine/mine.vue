@@ -6,7 +6,7 @@
 			<view>
 				<view class="text-left " style="background-color: #f00;height: 220rpx;vertical-align: middle;">
 
-					<view class="cu-avatar cu-item round" style="background-image: url(../../static/img/tabBar/user_on.png);margin: 60rpx">
+					<view @click="login" class="cu-avatar cu-item round" style="background-image: url(../../static/img/tabBar/user_on.png);margin: 60rpx">
 					</view>
 					<text class="text-black"> 123</text>
 
@@ -16,32 +16,37 @@
 
 					<!-- <view class=" margin-top-sm">我的订单</view> -->
 
-					<view class="cu-list grid col-4">
+					<view class="cu-list grid col-5">
 						<view class="cu-item">
-							<navigator url="../order/order?id=0" open-type="redirect" class="cuIcon-text text-red">
+							<navigator url="../order/order?id=" open-type="redirect" class="cuIcon-text text-red">
 
 								<text class="text-black">我的订单</text>
 							</navigator>
 						</view>
 						<view class="cu-item">
-							<navigator url="../order/order?id=1" open-type="redirect" class="cuIcon-pay text-red">
+							<navigator url="../order/order?id=2" open-type="redirect" class="cuIcon-pay text-red">
 
 								<text class="text-black">待付款</text>
 							</navigator>
 						</view>
 						<view class="cu-item">
-							<navigator url="../order/order?id=2" open-type="redirect" class="cuIcon-send text-red">
+							<navigator url="../order/order?id=3" open-type="redirect" class="cuIcon-send text-red">
 
 								<text class="text-black">待发货</text>
 							</navigator>
 						</view>
 						<view class="cu-item">
-							<navigator url="../order/order?id=3" open-type="redirect" class="cuIcon-safe text-red">
+							<navigator url="../order/order?id=4" open-type="redirect" class="cuIcon-safe text-red">
 
 								<text class="text-black">待收货</text>
 							</navigator>
 						</view>
+			 <view class="cu-item">
+			 	<navigator url="../order/order?id=5" open-type="redirect" class="cuIcon-comment text-red">
 			 
+			 		<text class="text-black">已完成</text>
+			 	</navigator>
+			 </view>
 					</view>
 
 				</view>
@@ -114,7 +119,11 @@
 			};
 		},
 		methods: {
-			 
+			 login(){
+				 uni.navigateTo({
+				 	url:'../login/login'
+				 })
+			 }
 		}
 	}
 </script>

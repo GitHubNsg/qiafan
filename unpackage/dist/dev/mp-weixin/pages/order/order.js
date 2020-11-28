@@ -92,10 +92,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   uniList: function() {
-    return __webpack_require__.e(/*! import() | components/uni-list/uni-list */ "components/uni-list/uni-list").then(__webpack_require__.bind(null, /*! @/components/uni-list/uni-list.vue */ 116))
+    return __webpack_require__.e(/*! import() | components/uni-list/uni-list */ "components/uni-list/uni-list").then(__webpack_require__.bind(null, /*! @/components/uni-list/uni-list.vue */ 122))
   },
   uniListItem: function() {
-    return __webpack_require__.e(/*! import() | components/uni-list-item/uni-list-item */ "components/uni-list-item/uni-list-item").then(__webpack_require__.bind(null, /*! @/components/uni-list-item/uni-list-item.vue */ 123))
+    return __webpack_require__.e(/*! import() | components/uni-list-item/uni-list-item */ "components/uni-list-item/uni-list-item").then(__webpack_require__.bind(null, /*! @/components/uni-list-item/uni-list-item.vue */ 129))
   }
 }
 var render = function() {
@@ -183,35 +183,47 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 var _default =
 {
   data: function data() {
     return {
       waterfall: '',
-      list: [] };
+      list: [],
+      status: '1' };
 
   },
   onLoad: function onLoad(option) {
-    var thus = this;
-    this.$net.fetch(
-    function (ret) {
-      thus.list = ret.list;
-    },
-    this.$net.getOrder,
-    {},
-    'post');
+    this.status = option.id;
+    this.loadData();
+  },
 
-  },
-  onPullDownRefresh: function onPullDownRefresh() {
-    console.log('refresh');
-    setTimeout(function () {
-      uni.stopPullDownRefresh();
-    }, 1000);
-  },
   methods: {
+    tabSelect: function tabSelect(e) {
+      this.status = e.currentTarget.id;
+      this.list = [];
+      this.loadData();
+    },
+    loadData: function loadData() {
+      var thus = this;
+      this.$net.fetch(
+      function (ret) {
+        uni.stopPullDownRefresh();
+        thus.list = thus.list.concat(ret.list);
+      },
+      this.$net.getOrder,
+      { status: thus.status },
+      'post');
+
+    },
+    onPullDownRefresh: function onPullDownRefresh() {
+      this.list = [];
+      this.loadData();
+    },
+
     /**
-              * 上拉加载回调函数
-              */
+        * 上拉加载回调函数
+        */
     onReachBottom: function onReachBottom() {
       this.loadMore();
     },
@@ -221,11 +233,6 @@ var _default =
         return;
       }
       console.log('99');
-      // this._execLoadData();
-    },
-    refresh: function refresh() {
-      this.clear();
-      console.log('00');
       // this._execLoadData();
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

@@ -8,16 +8,40 @@ const perfectOrder = "api.auth.order/perfect";  //  完成订单
 const address = "api.auth.address/get";  //  地址
 const getRegion="api.goods/getRegion";//区域
 
-
+const wxSession="api.wxapp/session";//区域
+const loginin="api.login/in";//
 
 
 
 
 const fetch = (ret,address,param,method='get') => {
 	console.log(param)
+	
+	var info=uni.getStorageSync("info");
+	var infoJ={};
+	try{
+		if(info!=undefined){
+			  infoJ=JSON.parse(info);
+		}
+	}catch(  e){
+		
+	}
+	
+	
+	if(method=='post'&&(infoJ.token==undefined||''==(infoJ.token))){
+		
+		uni.navigateTo({
+			url:'/pages/login/login'
+		})
+		return;
+		
+	}
+	
+	
+	
 	var header={
 		'content-type':'application/x-www-form-urlencoded',
-		'token': '921555d3ce6a3947bf7feae7f2bc719b'//uni.getStorageSync('token')
+		'token': infoJ.token//'921555d3ce6a3947bf7feae7f2bc719b'//uni.getStorageSync('token')
 	}; 
 	
 	uni.showLoading({
@@ -71,5 +95,7 @@ export default {
 	perfectOrder,
 	address,
 	getRegion,
-	getOrder
+	getOrder,
+	wxSession,
+	loginin
 }

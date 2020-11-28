@@ -1953,16 +1953,40 @@ var perfectOrder = "api.auth.order/perfect"; //  完成订单
 var address = "api.auth.address/get"; //  地址
 var getRegion = "api.goods/getRegion"; //区域
 
-
+var wxSession = "api.wxapp/session"; //区域
+var loginin = "api.login/in"; //
 
 
 
 
 var fetch = function fetch(ret, address, param) {var method = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'get';
   console.log(param);
+
+  var info = uni.getStorageSync("info");
+  var infoJ = {};
+  try {
+    if (info != undefined) {
+      infoJ = JSON.parse(info);
+    }
+  } catch (e) {
+
+  }
+
+
+  if (method == 'post' && (infoJ.token == undefined || '' == infoJ.token)) {
+
+    uni.navigateTo({
+      url: '/pages/login/login' });
+
+    return;
+
+  }
+
+
+
   var header = {
     'content-type': 'application/x-www-form-urlencoded',
-    'token': '921555d3ce6a3947bf7feae7f2bc719b' //uni.getStorageSync('token')
+    'token': infoJ.token //'921555d3ce6a3947bf7feae7f2bc719b'//uni.getStorageSync('token')
   };
 
   uni.showLoading({
@@ -2016,23 +2040,25 @@ var fetch = function fetch(ret, address, param) {var method = arguments.length >
   perfectOrder: perfectOrder,
   address: address,
   getRegion: getRegion,
-  getOrder: getOrder };exports.default = _default;
+  getOrder: getOrder,
+  wxSession: wxSession,
+  loginin: loginin };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 
-/***/ 142:
+/***/ 148:
 /*!**********************************************************!*\
   !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
   \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! regenerator-runtime */ 143);
+module.exports = __webpack_require__(/*! regenerator-runtime */ 149);
 
 /***/ }),
 
-/***/ 143:
+/***/ 149:
 /*!************************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime-module.js ***!
   \************************************************************/
@@ -2063,7 +2089,7 @@ var oldRuntime = hadRuntime && g.regeneratorRuntime;
 // Force reevalutation of runtime.js.
 g.regeneratorRuntime = undefined;
 
-module.exports = __webpack_require__(/*! ./runtime */ 144);
+module.exports = __webpack_require__(/*! ./runtime */ 150);
 
 if (hadRuntime) {
   // Restore the original runtime.
@@ -2080,7 +2106,7 @@ if (hadRuntime) {
 
 /***/ }),
 
-/***/ 144:
+/***/ 150:
 /*!*****************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime.js ***!
   \*****************************************************/
@@ -2812,7 +2838,7 @@ if (hadRuntime) {
 
 /***/ }),
 
-/***/ 152:
+/***/ 158:
 /*!**********************************************************************************!*\
   !*** /Users/ruo/Documents/HBuilderProjects/qiafan/components/uni-icons/icons.js ***!
   \**********************************************************************************/

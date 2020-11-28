@@ -119,12 +119,15 @@ export default {
 @import 'colorui/icon.css';
 
 .uni-page-refresh-inner {
+	/* #ifndef MP */
 	svg {
 		fill: #ff0000 !important;
 	}
 	circle {
 		stroke: #ff0000 !important;
 	}
+	/* #endif */
+	
 }
 .nav-list {
 	display: flex;

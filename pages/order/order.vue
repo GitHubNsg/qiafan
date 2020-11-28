@@ -2,9 +2,10 @@
 	<view>
 		<view class="text-center flex">
 			<view class="cu-item flex-sub" @click="tabSelect" id="">全部订单</view>
-			<view class="cu-item flex-sub" @click="tabSelect" id="1">待付款</view>
-			<view class="cu-item flex-sub" @click="tabSelect" id="2">待发货</view>
-			<view class="cu-item flex-sub" @click="tabSelect" id="3">待收货</view>
+			<view class="cu-item flex-sub" @click="tabSelect" id="2">待付款</view>
+			<view class="cu-item flex-sub" @click="tabSelect" id="3">待发货</view>
+			<view class="cu-item flex-sub" @click="tabSelect" id="4">待收货</view>
+			<view class="cu-item flex-sub" @click="tabSelect" id="5">已完成</view>
 		</view>
 
 		<view>
@@ -52,37 +53,37 @@ export default {
 		return {
 			waterfall: '',
 			list: [],
-			status:'1'
+			status: '1'
 		};
 	},
 	onLoad(option) {
-		this.status=option.id;
-		this.loadData()
+		this.status = option.id;
+		this.loadData();
 	},
- 
+
 	methods: {
-		tabSelect(e){
-			this.status=e.currentTarget.id;
-			this.list=[];
+		tabSelect(e) {
+			this.status = e.currentTarget.id;
+			this.list = [];
 			this.loadData();
-		}, 
-		loadData(){
-		var thus = this;
-		this.$net.fetch(
-			function(ret) {
-				uni.stopPullDownRefresh();
-				thus.list=thus.list.concat( ret.list);
-			},
-			this.$net.getOrder,
-			{'status':thus.status},
-			'post'
-		);	
+		},
+		loadData() {
+			var thus = this;
+			this.$net.fetch(
+				function(ret) {
+					uni.stopPullDownRefresh();
+					thus.list = thus.list.concat(ret.list);
+				},
+				this.$net.getOrder,
+				{ status: thus.status },
+				'post'
+			);
 		},
 		onPullDownRefresh() {
-					 this.list=[];
-					 this.loadData();
-					},
-		
+			this.list = [];
+			this.loadData();
+		},
+
 		/**
 		 * 上拉加载回调函数
 		 */
@@ -96,11 +97,9 @@ export default {
 			}
 			console.log('99');
 			// this._execLoadData();
-		} 
+		}
 	}
 };
 </script>
 
-<style>
- 
-</style>
+<style></style>

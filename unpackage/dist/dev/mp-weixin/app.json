@@ -10,7 +10,8 @@
     "pages/address/add",
     "pages/goods/goods",
     "pages/detail/detail",
-    "pages/order/pay"
+    "pages/order/pay",
+    "pages/login/login"
   ],
   "subPackages": [],
   "window": {

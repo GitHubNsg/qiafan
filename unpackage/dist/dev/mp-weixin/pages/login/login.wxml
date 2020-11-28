@@ -1,0 +1,1 @@
+<view><view class="content "><view data-event-opts="{{[['tap',[['login',['$event']]]]]}}" class="cu-avatar lg text-center cuIcon-weixin round bg-gradual-green" style="text-align:center;margin-top:90%;" bindtap="__e"></view></view></view>

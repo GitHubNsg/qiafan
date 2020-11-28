@@ -94,7 +94,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   vkUGoodsSkuPopup: function() {
-    return Promise.all(/*! import() | components/vk-u-goods-sku-popup/vk-u-goods-sku-popup */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/vk-u-goods-sku-popup/vk-u-goods-sku-popup")]).then(__webpack_require__.bind(null, /*! @/components/vk-u-goods-sku-popup/vk-u-goods-sku-popup.vue */ 137))
+    return Promise.all(/*! import() | components/vk-u-goods-sku-popup/vk-u-goods-sku-popup */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/vk-u-goods-sku-popup/vk-u-goods-sku-popup")]).then(__webpack_require__.bind(null, /*! @/components/vk-u-goods-sku-popup/vk-u-goods-sku-popup.vue */ 143))
   }
 }
 var render = function() {

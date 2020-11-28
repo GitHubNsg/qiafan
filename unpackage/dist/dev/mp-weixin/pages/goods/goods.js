@@ -146,23 +146,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
 //
 //
 //
@@ -193,21 +177,62 @@ var _default =
 {
   data: function data() {
     return {
-      dataList: [] };
+      dataList: [],
+      cate: '',
+      page: 1,
+      _isEnded: false };
 
   },
   onLoad: function onLoad(option) {
-    var id = option.id;
-    var thus = this;
-    this.$net.fetch(function (r) {
-      console.log(r);
-      thus.dataList = r.list;
-    }, this.$net.getGoods, {
-      'cate': id },
-    'post');
-
+    this.cate = option.id;
+    this.loadData();
   },
-  methods: {} };exports.default = _default;
+  methods: {
+    loadData: function loadData() {
+
+      var thus = this;
+      this.$net.fetch(
+      function (r) {
+        uni.stopPullDownRefresh();
+        if (r.page.pages <= r.page.current) {
+          thus._isEnded = true;
+        }
+        thus.dataList = thus.dataList.concat(r.list);
+      },
+      this.$net.getGoods,
+      {
+        cate: thus.cate,
+        'page': thus.page },
+
+      'post');
+
+    },
+    onPullDownRefresh: function onPullDownRefresh() {
+      this.page = 1;
+      this._isEnded = false;
+      this.dataList = [];
+      this.loadData();
+    },
+    /**
+        * 上拉加载回调函数
+        */
+    onReachBottom: function onReachBottom() {
+      this.loadMore();
+    },
+    loadMore: function loadMore() {
+      this.page++;
+      if (this._isEnded) {
+        uni.showToast({
+          title: '暂无更多数据',
+          icon: 'none' });
+
+        return;
+      }
+      this.loadData();
+      console.log('99');
+      // this._execLoadData();
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ })
 
