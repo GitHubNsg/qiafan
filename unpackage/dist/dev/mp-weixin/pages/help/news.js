@@ -250,9 +250,26 @@ var _default =
 
     },
     like: function like() {
+      var thus = this;
+      this.$net.fetch(
+      function (ret) {
+
+        this.news.my_like_state = this.news.my_like_state == 0 ? 1 : 0;
+      },
+      this.news.my_like_state == 0 ? this.$net.addLike : this.$net.delLike,
+      { cid: thus.news.id },
+      'post');
 
     },
     favor: function favor() {
+      var thus = this;
+      this.$net.fetch(
+      function (ret) {
+        this.news.my_coll_state = this.news.my_coll_state == 0 ? 1 : 0;
+      },
+      this.news.my_coll_state == 0 ? this.$net.addFavor : this.$net.delFavor,
+      { cid: thus.news.id },
+      'post');
 
     },
 

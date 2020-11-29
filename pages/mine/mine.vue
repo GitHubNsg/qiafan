@@ -47,6 +47,28 @@
 							<text class="text-gray">我的帮助</text>
 						</navigator>
 					</view>
+					
+					<view class="cu-item arrow">
+						<navigator class="content" url="../help/like" hover-class="none">
+							<text class="cuIcon-like text-gray"></text>
+							<text class="text-gray">我的喜欢</text>
+						</navigator>
+					</view>
+					
+					<view class="cu-item arrow">
+						<navigator class="content" url="../help/favor" hover-class="none">
+							<text class="cuIcon-favor text-gray"></text>
+							<text class="text-gray">我的收藏</text>
+						</navigator>
+					</view>
+					<view class="cu-item arrow">
+						<navigator class="content" url="../help/history" hover-class="none">
+							<text class="cuIcon-record text-gray"></text>
+							<text class="text-gray">浏览历史</text>
+						</navigator>
+					</view>
+					
+					
 					<view class="cu-item arrow">
 						<navigator class="content" url="../invited/invited" hover-class="none">
 							<text class="cuIcon-forward text-gray"></text>

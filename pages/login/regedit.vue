@@ -22,9 +22,10 @@
 
 
 			<view style=" text-align: center;  ">
-				<button @click="loginOther" class=" bg-red  margin-top-xl   text-center   radius  " >登录</button>
-
-				<view @click="regedit"  class=" text-blue  margin-top-xl  fr   radius margin-right-xs"  >去注册</view>
+				
+				<button @click="regedit" class=" margin-top-xl   text-center   round bg-red "  >注册</button>
+				
+				<view @click="loginOther" class=" text-blue  margin-top-xl  fr   radius margin-right-xs" >已有账号,去登录</view>
 			</view>
 			<!-- #endif -->
 		</view>
@@ -40,43 +41,22 @@ export default {
 		};
 	},
 	methods: {
-		regedit(){
-			uni.navigateTo({
-				url:'regedit'
+		loginOther(){
+			uni.navigateBack({
+				animationDuration:300
 			})
 		},
-		login() {
-			var thus = this;
-			uni.login({
-				success: ret => {
-					uni.showToast({
-						title: ret.code
-					});
-					thus.loginWx(ret.code);
-				},
-				fail: ret => {
-					uni.showToast({
-						title: ret.code
-					});
-				},
-				complete: ret => {}
-			});
-		},
-		loginWx(code) {
+		 
+		regedit(){
 			this.$net.fetch(function(v) {
-				uni.setStorageSync('info', JSON.stringify(v));
-			}, this.$net.wxSession + '?code=' + code);
-			thus.loadData();
-		},
-		loginOther(){
-			this.$net.fetch(function(v) {
-				uni.setStorageSync('info', JSON.stringify(v));
 				
 				uni.navigateBack({
 					animationDuration:300
 				})
 				
-			}, this.$net.loginin + '?phone=' + this.loginData.phone+"&password="+this.loginData.password);
+			}, this.$net.register +
+			 '?phone=' + this.loginData.phone+
+			 "&password="+this.loginData.password);
 		}
 	}
 };

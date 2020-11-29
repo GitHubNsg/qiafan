@@ -89,12 +89,36 @@
 				} = obj;
 				// 模拟添加到购物车,请替换成你自己的添加到购物车逻辑
 				let res = {};
-				let name = selectShop.goods_name;
-				if (selectShop.sku_name != "默认") {
-					name += "-" + selectShop.sku_name;
-				}
-				res.msg = `$ {name}已添加到购物车`;
-				if (typeof obj.success == "function") obj.success(res);
+				
+				var data=selectShop.goods_code
+				+"@"+selectShop.goods_spec
+				+"@"+selectShop.buy_num;
+				 
+				
+				var param={
+					'goods_id':selectShop.goods_code,
+					'goods_num':selectShop.buy_num,
+					'goods_sku_id':selectShop.goods_sku,
+					'goods_sku_desc':data,
+					
+				};
+				var thus=this;
+				this.$net.fetch(function(ret){
+					
+					
+					
+					thus.sku_key=false;
+					
+					uni.showToast({
+						title:ret,
+						icon:'none'
+					}) 
+					 
+					
+				},this.$net.addCart,param,'post');
+							 
+				
+				 
 			},
 			// 加入购物车按钮
 			addCart(selectShop) {

@@ -11,8 +11,8 @@
 		</view>
 
 		<view class="margin-top-xl">
-			<view class="cu-list menu">
-				<view @click="detail" :id="JSON.stringify(item.items)" class="cu-item arrow padding-top-xl" v-for="item in list" :key="item._id">
+			<view class="cu-list menu ">
+				<view @click="detail" :id="JSON.stringify(item.items)" class="cu-item arrow padding-top-xl margin-top-xs" v-for="item in list" :key="item._id">
 					<view class="uni-thumb margin-right-xs" style="width: 200rpx; height: 200rpx;" :class="{ 'shop-picture-column': waterfall }">
 						<image :src="item.items[0].goods_cover" mode="widthFix"></image>
 					</view>

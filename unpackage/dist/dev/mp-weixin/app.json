@@ -15,7 +15,10 @@
     "pages/invited/invited",
     "pages/invited/bind",
     "pages/order/detail",
-    "pages/help/news"
+    "pages/help/news",
+    "pages/help/like",
+    "pages/help/favor",
+    "pages/help/history"
   ],
   "subPackages": [],
   "window": {

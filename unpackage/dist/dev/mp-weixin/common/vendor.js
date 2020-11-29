@@ -1970,6 +1970,19 @@ var getNewsComment = "api.news/getComment";
 var getNewsMark = "api.news/getMark";
 var addComment = "api.auth.news/addComment";
 
+
+
+var getMeComment = "api.auth.news/getComment";
+var delComment = "api.auth.news/delComment";
+var addFavor = "api.auth.news/addCollect";
+var delFavor = "api.auth.news/delCollect";
+var getFavor = "api.auth.news/getCollect";
+var addLike = "api.auth.news/addLike";
+var delLike = "api.auth.news/delLike";
+var getLike = "api.auth.news/getLike";
+var getHistory = "api.auth.news/getHistory";
+
+
 var fetch = function fetch(ret, address, param) {var method = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'get';
   console.log(param);
 
@@ -2038,7 +2051,8 @@ var fetch = function fetch(ret, address, param) {var method = arguments.length >
       uni.navigateTo({
         url: '/pages/public/login' });
 
-    }, complete: function complete() {
+    },
+    complete: function complete() {
 
       uni.hideLoading();
       uni.stopPullDownRefresh();
@@ -2068,7 +2082,16 @@ var fetch = function fetch(ret, address, param) {var method = arguments.length >
   getNewsItem: getNewsItem,
   getNewsComment: getNewsComment,
   getNewsMark: getNewsMark,
-  addComment: addComment };exports.default = _default;
+  addComment: addComment,
+  getMeComment: getMeComment,
+  delComment: delComment,
+  addFavor: addFavor,
+  delFavor: delFavor,
+  getFavor: getFavor,
+  addLike: addLike,
+  delLike: delLike,
+  getLike: getLike,
+  getHistory: getHistory };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

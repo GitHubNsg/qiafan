@@ -26,9 +26,10 @@
 			<view class="cu-list menu ">
 				<view class="cu-item arrow content" v-for="(item, index) in order.items" :index="index">
 					
-					<view class="cu-avatar lg" 
-					:style="'background-image: url('+item.goods_cover+');'">
-					</view>
+					<image style="width: 160rpx;height: 160rpx;" 
+					:src="item.goods_cover"
+					>
+					</image>
 					
 					<view>
 						<view class="margin-sm">

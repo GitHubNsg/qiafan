@@ -11,7 +11,7 @@
         ,{
             "path" : "pages/cate/cate",
             "style" : {
-                "enablePullDownRefresh": true,
+                "enablePullDownRefresh": false,
                 "navigationBarTitleText": "分类"
 				
             }
@@ -95,11 +95,19 @@
             }
             
         }
-        ,{
-            "path" : "pages/login/login",
+       ,{
+           "path" : "pages/login/login",
+           "style" :                                                                                    
+           {
+               "navigationBarTitleText": "登录",
+               "enablePullDownRefresh": false
+           }
+           
+       } ,{
+            "path" : "pages/login/regedit",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "登录",
+                "navigationBarTitleText": "注册",
                 "enablePullDownRefresh": false
             }
             
@@ -139,7 +147,39 @@
 		        "enablePullDownRefresh": true
 		    }
 		    
+		},
+		{
+		    "path" : "pages/help/like",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "我的喜欢",
+		        "enablePullDownRefresh": true
+		    }
+		    
+		},
+		{
+		    "path" : "pages/help/favor",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "我的收藏",
+		        "enablePullDownRefresh": true
+		    }
+		    
+		},
+		{
+		    "path" : "pages/help/history",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "浏览记录",
+		        "enablePullDownRefresh": true
+		    }
+		    
 		}
+		
+		
+		
+		
+		
     ], 
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
