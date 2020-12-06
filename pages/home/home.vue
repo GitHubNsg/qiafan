@@ -57,16 +57,14 @@
 			
 			var thus=this;
 			this.$net.fetch(function(v){
-				thus.swiperList=v;
-				console.log(thus.swiperList)
+				thus.swiperList=v.wxapp.slider==null?[]:v.wxapp.slider.split("|");
+			 
 				
 			},this.$net.getSlider);
 			thus.loadData();
 			
 		},
-		methods: {
-			
-			
+		methods: { 
 			
 			loadData() {
 				
@@ -74,10 +72,14 @@
 				this.$net.fetch(
 					function(r) {
 						uni.stopPullDownRefresh();
-						if(r.page.pages<=r.page.current){
+						if(r.list.current_page<r.list.last_page){
+							console.log('12');
+							thus._isEnded=false;
+						}else{
+							console.log('23');
 							thus._isEnded=true;
 						}
-						thus.dataList =thus.dataList.concat(r.list) ;
+						thus.dataList =thus.dataList.concat(r.list.data) ;
 					},
 					this.$net.getGoods,
 					{

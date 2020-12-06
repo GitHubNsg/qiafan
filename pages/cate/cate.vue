@@ -22,10 +22,12 @@
 
 									<block v-for="(item,index) in subItem" :key="index">
 										<view>
+											<navigator :url="'../goods/goods?id='+item.category_id">
 											<view class="text-center padding-xs cu-item">{{item.name}}</view>
+											</navigator>
 											<view class=" grid col-2 cu-list no-padding " style=" margin-top: 0rpx;padding: 0rpx;">
-												<view class="cu-item" v-for="(childerItems,sub) in item.sub" :key="sub">
-													<navigator :url="'../goods/goods?id='+childerItems.id">
+												<view class="cu-item" v-for="(childerItems,child) in item.child" :key="child">
+													<navigator :url="'../goods/goods?id='+childerItems.category_id">
 
 														<view class="cu-avatar" :style="'background-image: url('+childerItems.cover+');'"></view>
 														<view class="content">
@@ -63,21 +65,18 @@
 		onLoad() {
 			var thus = this;
 			this.$net.fetch(function(v) {
-				thus.items = v;
-				thus.subItem = v[0].sub;
+				thus.items = v.list;
+				thus.subItem = thus.items[0].child;
 			}, this.$net.getCate);
 		},
 
 		methods: {
-			tabSelect(e) {
-				this.TabCur = e.currentTarget.dataset.id;
-				this.scrollLeft = (e.currentTarget.dataset.id - 1) * 60;
-			},
+			 
 			selectItem(e) {
 				console.log(this.items)
 				console.log(e.currentTarget.id)
-				if (this.items[e.currentTarget.id].sub != undefined) {
-					this.subItem = this.items[e.currentTarget.id].sub
+				if (this.items[e.currentTarget.id].child != undefined) {
+					this.subItem = this.items[e.currentTarget.id].child
 				} else {
 					this.subItem = []
 				}

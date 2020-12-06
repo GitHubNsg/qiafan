@@ -1,51 +1,55 @@
-const host = "http://qiafan.applinzi.com/ThinkAdmin/public/index.php/data/";
+// const host = "http://qiafan.applinzi.com/ThinkAdmin/public/index.php/data/";
 // const host = "http://127.0.0.1:8099/index.php/data/";
-const getSlider = "api.data/getSlider"; //轮播
-const getCate = "api.goods/getCate"; //类型
-const getGoods = "api.goods/getGoods"; // 商品
-const addOrder = "api.auth.order/add"; // 
-const getOrder = "api.auth.order/get"; // 
-const perfectOrder = "api.auth.order/perfect"; //  完成订单
-const paymentOrder = "api.auth.order/payment"; //  完成订单
+const host = "http://127.0.0.1:8888/public/index.php/api/";
 
-const address = "api.auth.address/get"; //  地址
-const addAddress = "api.auth.address/set"; //  地址
-const delAddress = "api.auth.address/remove"; //  地址
-const stateAddress = "api.auth.address/state"; //  地址
+// const host='https://qiafan.applinzi.com/qiafan/public/index.php/api/';
 
-const getRegion = "api.goods/getRegion"; //区域
+const getSlider = "wxapp/base"; //轮播
+const getCate = "category/lists"; //类型
+const getGoods = "goods/lists"; // 商品
+const addOrder = "auth.order/add"; // 
+const getOrder = "auth.order/get"; // 
+const perfectOrder = "auth.order/perfect"; //  完成订单
+const paymentOrder = "auth.order/payment"; //  完成订单
 
-const wxSession = "api.wxapp/session"; //区域
-const loginin = "api.login/in"; //
-const register= "api.login/register"; //
+const address = "auth.address/get"; //  地址
+const addAddress = "auth.address/set"; //  地址
+const delAddress = "auth.address/remove"; //  地址
+const stateAddress = "auth.address/state"; //  地址
 
-const bindFrom = "api.auth.center/bindFrom";
-const invited = "api.auth.center/getFrom";
-const getUserInfo = "api.auth.center/get";
+const getRegion = "goods/getRegion"; //区域
 
-const getNewsItem = "api.news/getItem";
-const getNewsComment = "api.news/getComment";
-const getNewsMark = "api.news/getMark";
-const addComment = "api.auth.news/addComment";
+const wxSession = "wxapp/session"; //区域
+const loginin = "login/in"; //
+const register= "login/register"; //
+
+const bindFrom = "auth.center/bindFrom";
+const invited = "auth.center/getFrom";
+const getUserInfo = "auth.center/get";
+
+const getNewsItem = "news/getItem";
+const getNewsComment = "news/getComment";
+const getNewsMark = "news/getMark";
+const addComment = "auth.news/addComment";
 
 
 
 
-const getMeComment = "api.auth.news/getComment";
-const delComment = "api.auth.news/delComment";
-const addFavor = "api.auth.news/addCollect";
-const delFavor = "api.auth.news/delCollect";
-const getFavor = "api.auth.news/getCollect";
-const addLike = "api.auth.news/addLike";
-const delLike = "api.auth.news/delLike";
-const getLike = "api.auth.news/getLike";
-const getHistory = "api.auth.news/getHistory";
+const getMeComment = "auth.news/getComment";
+const delComment = "auth.news/delComment";
+const addFavor = "auth.news/addCollect";
+const delFavor = "auth.news/delCollect";
+const getFavor = "auth.news/getCollect";
+const addLike = "auth.news/addLike";
+const delLike = "auth.news/delLike";
+const getLike = "auth.news/getLike";
+const getHistory = "auth.news/getHistory";
 
-const addCart = "api.auth.cart/add";
-const getCartList = "api.auth.cart/lists";
-const subCart = "api.auth.cart/sub";
-const deleteCart = "api.auth.cart/del";
-const clearCart = "api.auth.cart/clear";
+const addCart = "auth.cart/add";
+const getCartList = "auth.cart/lists";
+const subCart = "auth.cart/sub";
+const deleteCart = "auth.cart/del";
+const clearCart = "auth.cart/clear";
  
 
 
@@ -72,6 +76,10 @@ const fetch = (ret, address, param, method = 'get') => {
 
 	}
 
+	if(param==null){
+		param={};
+	}
+	param['wxapp_id']=10001;
 
 
 	var header = {
