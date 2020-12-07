@@ -14,7 +14,7 @@
 		 <scroll-view scroll-y>
 		 	<view class="grid col-2 cu-list  no-padding ">
 		 		<view class="cu-item" v-for="(item, index) in dataList" :key="index">
-		 			<navigator :url="'../detail/detail?id=' + JSON.stringify(item)">
+		 			<navigator :url="'../detail/detail?id=' +  item.id">
 		 				<view class="content text-center">
 		 					<image
 		 						class="cu-avatar xl  margin-10 "
@@ -30,8 +30,9 @@
 		 					</view>
 		 				</view>
 		 			</navigator>
-		 		</view>
+		 		</view> 
 		 	</view>
+			
 		 </scroll-view>
 	</view>
 </template>
@@ -71,7 +72,7 @@
 				var thus = this;
 				this.$net.fetch(
 					function(r) {
-						uni.stopPullDownRefresh();
+						 
 						if(r.list.current_page<r.list.last_page){
 							console.log('12');
 							thus._isEnded=false;

@@ -56,22 +56,43 @@
 				banner: [],
 				goods: {},
 				sku_key:false,
+				id:''
 			};
 		},
 		onLoad(option) {
 
-			var id = option.id;
-			this.goods = JSON.parse(id);
-			console.log(this.goods);
-			this.banner = this.goods.slider;
+			this.id = option.id;
+			 
 			that=this;
 
 		},
 		mounted() {
 			that = this;
+			this.loadData();
 			 
 		},
 		methods: {
+			onPullDownRefresh(){
+				loadData();
+			},
+			loadData(){ 
+				
+				this.$net.fetch(
+					function(r) {
+					 
+						that.goods = r.detail;
+						that.banner = that.goods.slider.split("|");
+					},
+					this.$net.detail,
+					{
+						goods_id: that.id,
+						'page':that.page
+					},
+					'post'
+				);
+				
+				
+			},
 			 gotoCart(){
 				 console.log(123);
 				 uni.reLaunch({

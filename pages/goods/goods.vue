@@ -3,7 +3,7 @@
 		<scroll-view scroll-y>
 			<view class="grid col-2 cu-list  no-padding ">
 				<view class="cu-item" v-for="(item, index) in dataList" :key="index">
-					<navigator :url="'../detail/detail?id=' + JSON.stringify(item)">
+					<navigator :url="'../detail/detail?id=' + item.goods_id">
 						<view class="content text-center">
 							<image
 								class="cu-avatar xl  margin-10 "
@@ -12,10 +12,9 @@
 								:style="'background-image: url(' + item.cover + ');'"
 							></image>
 
-							<text class="text-ABC text-lg " style="color: black;">{{ item.name }}</text>
+							<text class="text-ABC text-lg " style="color: black;">{{ item.goods_name }}</text>
 							<view class="text-center">
-								<text class="text-price text-lg" style="color: red;">{{ item.price_selling }}</text>
-								<text class="text-price " style=" font-style: italic;text-decoration: line-through;">{{ item.price_market }}</text>
+								<text class="text-price text-lg" style="color: red;">{{ item.goods_min_price }}-{{ item.goods_max_price }}</text>
 							</view>
 						</view>
 					</navigator>
@@ -45,14 +44,18 @@ export default {
 			var thus = this;
 			this.$net.fetch(
 				function(r) {
-					if(r.page.pages<=r.page.current){
-						thus._isEnded=true;
-					}
-					thus.dataList =thus.dataList.concat(r.list) ;
+					 if(r.list.current_page<r.list.last_page){
+					 	console.log('12');
+					 	thus._isEnded=false;
+					 }else{
+					 	console.log('23');
+					 	thus._isEnded=true;
+					 }
+					thus.dataList =thus.dataList.concat(r.list.data) ;
 				},
 				this.$net.getGoods,
 				{
-					cate: thus.cate,
+					category_id: thus.cate,
 					'page':thus.page
 				},
 				'post'

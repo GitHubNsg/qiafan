@@ -82,7 +82,7 @@
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "商品详情",
-                "enablePullDownRefresh": false
+                "enablePullDownRefresh": true
             }
             
         }
