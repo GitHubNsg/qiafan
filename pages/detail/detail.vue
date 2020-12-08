@@ -190,10 +190,22 @@
 				
 				
 				this.$net.fetch(function(ret) {
-				
+					
+					if(ret.order_id==null||ret.order_id==''){
+						
+						uni.showToast({
+							title:ret.payment.msg,
+							icon:"none",
+							
+						})
+						
+					}else{
 					uni.navigateTo({
 						url: '../order/pay?id=' + JSON.stringify(ret)
-					})
+					})	
+					}
+				
+					
 					// that.$router.push({path:})
 				
 				}, this.$net.addOrder, 
