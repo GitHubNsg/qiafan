@@ -37,7 +37,7 @@
 					购物车
 
 				</view>
-				<view class="bg-red submit" @click="sku_key = true">立即订购</view>
+				<view class="bg-red submit"  @click="buy">立即订购</view>
 			</view>
 		</view>
 		<vk-u-goods-sku-popup v-model="sku_key" :custom-action="findGoodsInfo" :mode="1" border-radius="20" @add-cart="addCart"
@@ -71,6 +71,26 @@
 
 		},
 		methods: {
+			buy(){
+				if(this.goods['']==10){
+					
+					var param = {
+						'goods_id': that.goods.goods_id,
+						'goods_num': 1,
+						'goods_sku_id': selectShop.goods_spec_id,
+					
+					};
+					this.submit(param);
+					
+				}else{
+					 
+					this.sku_key=true;
+				}
+				
+				
+				
+			},
+			
 			onPullDownRefresh() {
 				this.loadData();
 			},
@@ -155,29 +175,32 @@
 			// 立即购买
 			buyNow(selectShop) {
 				console.log(selectShop);
-				var data = {
+				var param = {
 					'goods_id': that.goods.goods_id,
 					'goods_num': selectShop.buy_num,
 					'goods_sku_id': selectShop.goods_spec_id,
-
+				
 				};
-
-
-
-				this.$net.fetch(function(ret) {
-
-					uni.navigateTo({
-						url: '../order/pay?id=' + JSON.stringify(ret)
-					})
-					// that.$router.push({path:})
-
-				}, this.$net.addOrder, 
-					  data
-				, 'post');
+				this.submit(param);
 
 				// 
 
 			},
+			submit(data){ 
+				
+				
+				this.$net.fetch(function(ret) {
+				
+					uni.navigateTo({
+						url: '../order/pay?id=' + JSON.stringify(ret)
+					})
+					// that.$router.push({path:})
+				
+				}, this.$net.addOrder, 
+					  data
+				, 'post');
+			},
+			
 			/**
 			 * 获取商品信息
 			 * 这里可以看到每次打开SKU都会去重新请求商品信息,为的是每次打开SKU组件可以实时看到剩余库存

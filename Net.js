@@ -1,7 +1,7 @@
 // const host = "http://qiafan.applinzi.com/ThinkAdmin/public/index.php/data/";
 // const host = "http://127.0.0.1:8099/index.php/data/";
-// const host = "http://127.0.0.1:8888/public/index.php/api/";
-const host = "http://127.0.0.1/index.php/api/";
+const host = "http://127.0.0.1:8888/public/index.php/api/";
+// const host = "http://127.0.0.1/index.php/api/";
 
 // const host='https://qiafan.applinzi.com/qiafan/public/index.php/api/';
 

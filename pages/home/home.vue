@@ -14,7 +14,7 @@
 		 <scroll-view scroll-y>
 		 	<view class="grid col-2 cu-list  no-padding ">
 		 		<view class="cu-item" v-for="(item, index) in dataList" :key="index">
-		 			<navigator :url="'../detail/detail?id=' +  item.id">
+		 			<navigator :url="'../detail/detail?id=' +  item.goods_id">
 		 				<view class="content text-center">
 		 					<image
 		 						class="cu-avatar xl  margin-10 "

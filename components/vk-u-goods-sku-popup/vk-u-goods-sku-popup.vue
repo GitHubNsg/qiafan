@@ -549,18 +549,18 @@
 			},
 			// 自动选择sku前提是只有一组sku,默认自动选择最前面的有库存的sku
 			autoClickSku() {
-				let skuList = that.goodsInfo[that.skuListName];
+				let skuList = that.goodsInfo['spec_list'];
 				let specListArr = that.goodsInfo[that.specListName];
-				if (specListArr.length == 1) {
-					let specList = specListArr[0].list;
-					for (let i = 0; i < specList.length; i++) {
-						let sku = that.getListItem(skuList, that.skuArrName, [specList[i].name]);
-						if (sku) {
-							that.skuClick(specList[i], 0, {}, i);
-							break;
-						}
-					}
-				}
+				// if (skuList.length == 1) {
+				// 	let specList = specListArr[0].spec_items;
+				// 	for (let i = 0; i < specList.length; i++) {
+				// 		let sku = that.getListItem(skuList, that.skuArrName, [specList[i].name]);
+				// 		if (sku) {
+				// 			that.skuClick(specList[i], 0, {}, i);
+				// 			break;
+				// 		}
+				// 	}
+				// }
 			}
 		},
 		// 过滤器
