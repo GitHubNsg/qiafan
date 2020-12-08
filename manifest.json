@@ -1,8 +1,8 @@
 {
-    "name" : "qiafan",
+    "name" : "",
     "appid" : "__UNI__EE74D02",
     "description" : "",
-    "versionName" : "ColorUi for UniApp 2.1.4",
+    "versionName" : "qiafan",
     "versionCode" : 214,
     "transformPx" : false,
     "app-plus" : {
@@ -48,7 +48,7 @@
     /* 快应用特有相关 */
     "mp-weixin" : {
         /* 小程序特有相关 */
-        "appid" : "wx3cb4fb0d501022b1",
+        "appid" : "",
         "setting" : {
             "urlCheck" : false,
             "es6" : true,

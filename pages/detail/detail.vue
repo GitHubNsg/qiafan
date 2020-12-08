@@ -30,19 +30,17 @@
 					</view>
 					客服
 				</button>
-				<view  class="action"  @click="gotoCart">
-					 
-						<view class="cuIcon-cart">
-						</view>
-						购物车
-				 
+				<view class="action" @click="gotoCart">
+
+					<view class="cuIcon-cart">
+					</view>
+					购物车
+
 				</view>
 				<view class="bg-red submit" @click="sku_key = true">立即订购</view>
 			</view>
 		</view>
-		<vk-u-goods-sku-popup
-		 v-model="sku_key"
-		  :custom-action="findGoodsInfo" :mode="1" border-radius="20" @add-cart="addCart"
+		<vk-u-goods-sku-popup v-model="sku_key" :custom-action="findGoodsInfo" :mode="1" border-radius="20" @add-cart="addCart"
 		 @buy-now="buyNow"></vk-u-goods-sku-popup>
 
 	</view>
@@ -55,54 +53,55 @@
 			return {
 				banner: [],
 				goods: {},
-				sku_key:false,
-				id:''
+				sku_key: false,
+				id: '',
+				specData: ''
 			};
 		},
 		onLoad(option) {
 
 			this.id = option.id;
-			 
-			that=this;
+
+			that = this;
 
 		},
 		mounted() {
 			that = this;
 			this.loadData();
-			 
+
 		},
 		methods: {
-			onPullDownRefresh(){
-				loadData();
+			onPullDownRefresh() {
+				this.loadData();
 			},
-			loadData(){ 
-				
+			loadData() {
+
 				this.$net.fetch(
 					function(r) {
-					 
+
 						that.goods = r.detail;
+						that.specData = r.specData;
 						that.banner = that.goods.slider.split("|");
 					},
-					this.$net.detail,
-					{
+					this.$net.detail, {
 						goods_id: that.id,
-						'page':that.page
+						'page': that.page
 					},
 					'post'
 				);
-				
-				
+
+
 			},
-			 gotoCart(){
-				 console.log(123);
-				 uni.reLaunch({
-				 	url:'../cart/cart'
-				 })
-				 // uni.navigateTo({
-				 // 	url:'../cate/cate'
-				 // })
-			 },
-			 
+			gotoCart() {
+				console.log(123);
+				uni.reLaunch({
+					url: '../cart/cart'
+				})
+				// uni.navigateTo({
+				// 	url:'../cate/cate'
+				// })
+			},
+
 			// 加入购物车前的判断
 			addCartFn(obj) {
 				let {
@@ -110,39 +109,40 @@
 				} = obj;
 				// 模拟添加到购物车,请替换成你自己的添加到购物车逻辑
 				let res = {};
-				
-				var data=selectShop.goods_code
-				+"@"+selectShop.goods_spec
-				+"@"+selectShop.buy_num;
-				 
-				
-				var param={
-					'goods_id':selectShop.goods_code,
-					'goods_num':selectShop.buy_num,
-					'goods_sku_id':selectShop.goods_sku,
-					'goods_sku_desc':data,
-					
+
+				var data = selectShop.goods_code +
+					"@" + selectShop.goods_spec +
+					"@" + selectShop.buy_num;
+
+
+				var param = {
+					'goods_id': selectShop.goods_code,
+					'goods_num': selectShop.buy_num,
+					'goods_sku_id': selectShop.goods_sku,
+					'goods_sku_desc': data,
+
 				};
-				var thus=this;
-				this.$net.fetch(function(ret){
-					
-					
-					
-					thus.sku_key=false;
-					
+				var thus = this;
+				this.$net.fetch(function(ret) {
+
+
+
+					thus.sku_key = false;
+
 					uni.showToast({
-						title:ret,
-						icon:'none'
-					}) 
-					 
-					
-				},this.$net.addCart,param,'post');
-							 
-				
-				 
+						title: ret,
+						icon: 'none'
+					})
+
+
+				}, this.$net.addCart, param, 'post');
+
+
+
 			},
 			// 加入购物车按钮
 			addCart(selectShop) {
+
 				console.log("监听 - 加入购物车");
 				that.addCartFn({
 					selectShop: selectShop,
@@ -154,34 +154,41 @@
 			},
 			// 立即购买
 			buyNow(selectShop) {
-				 
-				var data=selectShop.goods_code
-				+"@"+selectShop.goods_spec
-				+"@"+selectShop.buy_num;
-				
-				this.$net.fetch(function(ret){
-					
+				console.log(selectShop);
+				var data = {
+					'goods_id': that.goods.goods_id,
+					'goods_num': selectShop.buy_num,
+					'goods_sku_id': selectShop.goods_spec_id,
+
+				};
+
+
+
+				this.$net.fetch(function(ret) {
+
 					uni.navigateTo({
-						url:'../order/pay?id='+JSON.stringify(ret)
+						url: '../order/pay?id=' + JSON.stringify(ret)
 					})
 					// that.$router.push({path:})
-					
-				},this.$net.addOrder,{'items':data},'post');
-			 
-			 // 
-			 
+
+				}, this.$net.addOrder, 
+					  data
+				, 'post');
+
+				// 
+
 			},
 			/**
 			 * 获取商品信息
 			 * 这里可以看到每次打开SKU都会去重新请求商品信息,为的是每次打开SKU组件可以实时看到剩余库存
 			 */
 			findGoodsInfo() {
-				var thus=this;
+				var thus = this;
 				return new Promise(function(resolve, reject) {
-					resolve(thus.goods);
-					
+					resolve(thus.specData);
+
 					// 这里是获取商品信息的后端请求,可以用你自己的方式请求获取,本例子中用的是unicloud的云函数获取商品信息
-					 
+
 				});
 			},
 			toast(msg) {
