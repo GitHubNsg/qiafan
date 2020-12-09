@@ -1,7 +1,7 @@
 // const host = "http://qiafan.applinzi.com/ThinkAdmin/public/index.php/data/";
 // const host = "http://127.0.0.1:8099/index.php/data/";
-const host = "http://127.0.0.1:8888/public/index.php/api/";
-// const host = "http://127.0.0.1/index.php/api/";
+// const host = "http://127.0.0.1:8888/public/index.php/api/";
+const host = "http://127.0.0.1/index.php/api/";
 
 // const host='https://qiafan.applinzi.com/qiafan/public/index.php/api/';
 
@@ -10,7 +10,8 @@ const getCate = "category/lists"; //类型
 const getGoods = "goods/lists"; // 商品
 const detail="goods/detail"; // 商品
 const addOrder = "order/buyNow"; // 
-const getOrder = "auth.order/get"; // 
+const getOrder = "user.order/lists"; // 
+const orderDetail = "user.order/detail"; // 
 const perfectOrder = "auth.order/perfect"; //  完成订单
 const paymentOrder = "auth.order/payment"; //  完成订单
 
@@ -112,7 +113,7 @@ const fetch = (ret, address, param, method = 'get') => {
 					ret((res.data).data);
 				} else {
 					uni.showToast({
-						title: res.data.info,
+						title: res.data.msg,
 						icon: 'none'
 					})
 				}
@@ -174,6 +175,7 @@ export default {
 	deleteCart,
 	clearCart,
 	register,
-	detail
+	detail,
+	orderDetail
 
 }

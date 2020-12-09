@@ -17,16 +17,16 @@
 
 					<view class="cu-list grid col-5">
 						<view class="cu-item">
-							<navigator url="../order/order?id=" class="cuIcon-text text-red"><text class="text-black">我的订单</text></navigator>
+							<navigator url="../order/order?id=all" class="cuIcon-text text-red"><text class="text-black">我的订单</text></navigator>
 						</view>
 						<view class="cu-item">
-							<navigator url="../order/order?id=2" class="cuIcon-pay text-red"><text class="text-black">待付款</text></navigator>
+							<navigator url="../order/order?id=payment" class="cuIcon-pay text-red"><text class="text-black">待付款</text></navigator>
 						</view>
 						<view class="cu-item">
-							<navigator url="../order/order?id=3" class="cuIcon-send text-red"><text class="text-black">待发货</text></navigator>
+							<navigator url="../order/order?id=delivery" class="cuIcon-send text-red"><text class="text-black">待发货</text></navigator>
 						</view>
 						<view class="cu-item">
-							<navigator url="../order/order?id=4" class="cuIcon-safe text-red"><text class="text-black">待收货</text></navigator>
+							<navigator url="../order/order?id=received" class="cuIcon-safe text-red"><text class="text-black">待收货</text></navigator>
 						</view>
 						<view class="cu-item">
 							<navigator url="../order/order?id=5" class="cuIcon-comment text-red"><text class="text-black">已完成</text></navigator>
