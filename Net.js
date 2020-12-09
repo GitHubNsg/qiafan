@@ -1,7 +1,7 @@
 // const host = "http://qiafan.applinzi.com/ThinkAdmin/public/index.php/data/";
 // const host = "http://127.0.0.1:8099/index.php/data/";
-// const host = "http://127.0.0.1:8888/public/index.php/api/";
-const host = "http://127.0.0.1/index.php/api/";
+const host = "http://127.0.0.1:8888/public/index.php/api/";
+// const host = "http://127.0.0.1/index.php/api/";
 
 // const host='https://qiafan.applinzi.com/qiafan/public/index.php/api/';
 
@@ -12,13 +12,13 @@ const detail="goods/detail"; // 商品
 const addOrder = "order/buyNow"; // 
 const getOrder = "user.order/lists"; // 
 const orderDetail = "user.order/detail"; // 
-const perfectOrder = "auth.order/perfect"; //  完成订单
-const paymentOrder = "auth.order/payment"; //  完成订单
+const perfectOrder = "order/perfect"; //  完成订单
+const paymentOrder = "order/payment"; //  完成订单
 
-const address = "auth.address/get"; //  地址
-const addAddress = "auth.address/set"; //  地址
-const delAddress = "auth.address/remove"; //  地址
-const stateAddress = "auth.address/state"; //  地址
+const address = "address/get"; //  地址
+const addAddress = "address/set"; //  地址
+const delAddress = "address/remove"; //  地址
+const stateAddress = "address/state"; //  地址
 
 const getRegion = "goods/getRegion"; //区域
 
@@ -26,33 +26,33 @@ const wxSession = "wxapp/session"; //区域
 const loginin = "login/in"; //
 const register= "login/register"; //
 
-const bindFrom = "auth.center/bindFrom";
-const invited = "auth.center/getFrom";
-const getUserInfo = "auth.center/get";
+const bindFrom = "center/bindFrom";
+const invited = "center/getFrom";
+const getUserInfo = "center/get";
 
 const getNewsItem = "news/getItem";
 const getNewsComment = "news/getComment";
 const getNewsMark = "news/getMark";
-const addComment = "auth.news/addComment";
+const addComment = "news/addComment";
 
 
 
 
-const getMeComment = "auth.news/getComment";
-const delComment = "auth.news/delComment";
-const addFavor = "auth.news/addCollect";
-const delFavor = "auth.news/delCollect";
-const getFavor = "auth.news/getCollect";
-const addLike = "auth.news/addLike";
-const delLike = "auth.news/delLike";
-const getLike = "auth.news/getLike";
-const getHistory = "auth.news/getHistory";
+const getMeComment = "news/getComment";
+const delComment = "news/delComment";
+const addFavor = "news/addCollect";
+const delFavor = "news/delCollect";
+const getFavor = "news/getCollect";
+const addLike = "news/addLike";
+const delLike = "news/delLike";
+const getLike = "news/getLike";
+const getHistory = "news/getHistory";
 
-const addCart = "auth.cart/add";
-const getCartList = "auth.cart/lists";
-const subCart = "auth.cart/sub";
-const deleteCart = "auth.cart/del";
-const clearCart = "auth.cart/clear";
+const addCart = "cart/add";
+const getCartList = "cart/lists";
+const subCart = "cart/sub";
+const deleteCart = "cart/del";
+const clearCart = "cart/clear";
  
 
 

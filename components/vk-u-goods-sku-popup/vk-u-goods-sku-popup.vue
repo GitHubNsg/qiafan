@@ -387,6 +387,7 @@
 					for (var item = 0; item < that.goodsInfo['spec_list'].length; item++) {
 						if (that.goodsInfo['spec_list'][item].spec_sku_id == that.subIndex.join("_")) {
 							that.selectShop = that.goodsInfo['spec_list'][item];
+							that.selectShop['goods_sku'] = that.selectArr;
 						}
 					}
 
