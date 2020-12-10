@@ -10,7 +10,7 @@
 							</view>
 						</view>
 						<view @click="select" :id="JSON.stringify(item)">
-							<view class=" content">{{ item.province }}-{{ item.area }}-{{ item.city }}-{{ item.address }}</view>
+							<view class=" content">{{ item.province }}-{{ item.area }}-{{ item.city }}-{{ item.detail }}</view>
 						</view>
 
 						<view class="content fr flex text-right">

@@ -22,7 +22,7 @@
 			</view>
 			<view class="cu-form-group">
 				<view class="title">详细地址</view>
-				<input placeholder="详细地址" v-model="address.address" name="input"></input>
+				<input placeholder="详细地址" v-model="address.detail" name="input"></input>
 			</view>
 
 
@@ -73,6 +73,12 @@
 						this.address.province=e.regionArr[0];
 						this.address.city=e.regionArr[1];
 						this.address.area=e.regionArr[2];
+						this.address.region=e.provinceCode+","+e.cityCode+","+e.districtCode;
+						//cityCode: 2
+// districtCode: 3
+// provinceCode: 1
+						
+						
 				    },
 			save: function() {
 				

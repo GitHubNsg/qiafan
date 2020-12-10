@@ -15,7 +15,7 @@
 				<view>
 					<!-- <view class=" margin-top-sm">我的订单</view> -->
 
-					<view class="cu-list grid col-5">
+					<view class="cu-list grid col-4">
 						<view class="cu-item">
 							<navigator url="../order/order?id=all" class="cuIcon-text text-red"><text class="text-black">我的订单</text></navigator>
 						</view>
@@ -28,9 +28,7 @@
 						<view class="cu-item">
 							<navigator url="../order/order?id=received" class="cuIcon-safe text-red"><text class="text-black">待收货</text></navigator>
 						</view>
-						<view class="cu-item">
-							<navigator url="../order/order?id=5" class="cuIcon-comment text-red"><text class="text-black">已完成</text></navigator>
-						</view>
+						 
 					</view>
 				</view>
 
@@ -41,48 +39,30 @@
 							<text class="text-grey">收货地址</text>
 						</navigator>
 					</view>
-					<view class="cu-item arrow">
-						<navigator class="content" url="../help/help" hover-class="none">
-							<text class="cuIcon-question text-gray"></text>
-							<text class="text-gray">我的帮助</text>
-						</navigator>
-					</view>
+				 
 					
-					<view class="cu-item arrow">
-						<navigator class="content" url="../help/like" hover-class="none">
-							<text class="cuIcon-like text-gray"></text>
-							<text class="text-gray">我的喜欢</text>
-						</navigator>
-					</view>
-					
-					<view class="cu-item arrow">
-						<navigator class="content" url="../help/favor" hover-class="none">
-							<text class="cuIcon-favor text-gray"></text>
-							<text class="text-gray">我的收藏</text>
-						</navigator>
-					</view>
-					<view class="cu-item arrow">
-						<navigator class="content" url="../help/history" hover-class="none">
-							<text class="cuIcon-record text-gray"></text>
-							<text class="text-gray">浏览历史</text>
-						</navigator>
-					</view>
+				 
+					 
 					
 					
-					<view class="cu-item arrow">
+				<!-- 	<view class="cu-item arrow">
 						<navigator class="content" url="../invited/invited" hover-class="none">
 							<text class="cuIcon-forward text-gray"></text>
 							<text class="text-gray">邀请人</text>
 						</navigator>
-					</view>
-					<view class="cu-item arrow">
-						<button open-type="contact" class="content">
-							<view class="content">
-								<text class="cuIcon-community text-gray"></text>
-								<text class="text-gray">联系客服</text>
-							</view>
-						</button>
-					</view>
+					</view> -->
+				
+				<!-- #ifdef MP-WEIXIN -->
+				<view class="cu-item arrow">
+					<button open-type="contact" class="content">
+						<view class="content">
+							<text class="cuIcon-community text-gray"></text>
+							<text class="text-gray">联系客服</text>
+						</view>
+					</button>
+				</view>
+				
+				<!-- #endif -->
 					<view class="cu-item" @click="exit">
 						<view>
 							<view class="content">

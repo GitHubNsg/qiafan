@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "新增收货地址",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "n-address": "/components/n-address/n-address"
+  }
+}

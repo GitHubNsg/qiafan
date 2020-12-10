@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "vk-u-number-box": "/components/vk-u-number-box/vk-u-number-box"
+  },
+  "component": true
+}

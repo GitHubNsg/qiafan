@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "商品详情",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "vk-u-goods-sku-popup": "/components/vk-u-goods-sku-popup/vk-u-goods-sku-popup"
+  }
+}

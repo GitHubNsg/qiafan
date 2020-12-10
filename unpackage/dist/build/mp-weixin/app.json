@@ -1,0 +1,67 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/cate/cate",
+    "pages/cart/cart",
+    "pages/mine/mine",
+    "pages/help/help",
+    "pages/order/order",
+    "pages/address/address",
+    "pages/address/add",
+    "pages/goods/goods",
+    "pages/detail/detail",
+    "pages/order/pay",
+    "pages/login/login",
+    "pages/login/regedit",
+    "pages/invited/invited",
+    "pages/invited/bind",
+    "pages/order/detail",
+    "pages/help/news",
+    "pages/help/like",
+    "pages/help/favor",
+    "pages/help/history"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "恰饭",
+    "navigationBarBackgroundColor": "#f00",
+    "backgroundColor": "#f00"
+  },
+  "tabBar": {
+    "borderStyle": "black",
+    "backgroundColor": "#FFFFFF",
+    "color": "#000",
+    "selectedColor": "#f00",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "iconPath": "static/img/tabBar/home.png",
+        "selectedIconPath": "static/img/tabBar/home_on.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/cate/cate",
+        "iconPath": "static/img/tabBar/cate.png",
+        "selectedIconPath": "static/img/tabBar/cate_on.png",
+        "text": "分类"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "iconPath": "static/img/tabBar/cart.png",
+        "selectedIconPath": "static/img/tabBar/cart_on.png",
+        "text": "购物车"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "iconPath": "static/img/tabBar/user.png",
+        "selectedIconPath": "static/img/tabBar/user_on.png",
+        "text": "我"
+      }
+    ]
+  },
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom"
+  },
+  "sitemapLocation": "sitemap.json"
+}

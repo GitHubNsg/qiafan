@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "n-transition": "/components/n-transition/n-transition"
+  },
+  "component": true
+}

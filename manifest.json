@@ -1,5 +1,5 @@
 {
-    "name" : "",
+    "name" : "饭小饭",
     "appid" : "__UNI__EE74D02",
     "description" : "",
     "versionName" : "qiafan",
@@ -48,7 +48,7 @@
     /* 快应用特有相关 */
     "mp-weixin" : {
         /* 小程序特有相关 */
-        "appid" : "",
+        "appid" : "wx22b8da09c83eb28f",
         "setting" : {
             "urlCheck" : false,
             "es6" : true,

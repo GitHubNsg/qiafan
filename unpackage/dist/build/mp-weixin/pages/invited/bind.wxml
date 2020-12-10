@@ -1,0 +1,1 @@
+<view><form><view class="cu-form-group margin-top"><view class="title">邀请人</view><input placeholder="邀请人" name="input" data-event-opts="{{[['input',[['__set_model',['$0','id','$event',[]],['bind']]]]]}}" value="{{bind.id}}" bindinput="__e"/></view></form><button data-event-opts="{{[['tap',[['save']]]]}}" class="bg-red  submit text-white " bindtap="__e">保存</button></view>

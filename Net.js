@@ -1,9 +1,9 @@
 // const host = "http://qiafan.applinzi.com/ThinkAdmin/public/index.php/data/";
 // const host = "http://127.0.0.1:8099/index.php/data/";
-const host = "http://127.0.0.1:8888/public/index.php/api/";
+// const host = "http://127.0.0.1:8888/public/index.php/api/";
 // const host = "http://127.0.0.1/index.php/api/";
 
-// const host='https://qiafan.applinzi.com/qiafan/public/index.php/api/';
+const host='https://qiafan.applinzi.com/qiafan/public/index.php/api/';
 
 const getSlider = "wxapp/base"; //轮播
 const getCate = "category/lists"; //类型
@@ -13,14 +13,14 @@ const addOrder = "order/buyNow"; //
 const getOrder = "user.order/lists"; // 
 const orderDetail = "user.order/detail"; // 
 const perfectOrder = "order/perfect"; //  完成订单
-const paymentOrder = "order/payment"; //  完成订单
+const paymentOrder = "user.order/pay"; //  订单下单
 
-const address = "address/get"; //  地址
-const addAddress = "address/set"; //  地址
+const address = "address/lists"; //  地址
+const addAddress = "address/add"; //  地址
 const delAddress = "address/remove"; //  地址
 const stateAddress = "address/state"; //  地址
 
-const getRegion = "goods/getRegion"; //区域
+const getRegion = "address/getRegion"; //区域
 
 const wxSession = "wxapp/session"; //区域
 const loginin = "login/in"; //

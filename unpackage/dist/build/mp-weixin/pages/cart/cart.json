@@ -1,0 +1,7 @@
+{
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "购物车",
+  "usingComponents": {
+    "vk-u-number-box": "/components/vk-u-number-box/vk-u-number-box"
+  }
+}

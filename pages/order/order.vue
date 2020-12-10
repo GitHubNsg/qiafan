@@ -40,7 +40,7 @@
 								发货状态: {{item.receipt_status.text}}
 							 
 
-								<text @click.stop="pay" :id="item.order_no" class="text-white fr padding-xs  bg-red" v-if="item.status == 2">去付款</text>
+								<text @click.stop="pay" :id="item.order_id" class="text-white fr padding-xs  bg-red" v-if="item.pay_status.value == 10">去付款</text>
 							</view>
 						</view>
 					</view>
@@ -130,7 +130,7 @@ export default {
 					 thus.onPullDownRefresh();
 				},
 				this.$net.paymentOrder,
-				{ order_no: e.currentTarget.id},
+				{ order_id: e.currentTarget.id},
 				'post'
 			); 
 			
